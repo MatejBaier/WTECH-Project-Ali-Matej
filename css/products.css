@@ -1,0 +1,76 @@
+body {
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+header {
+  height: 10vh;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 10vh);
+}
+
+.sidebar {
+  background-color: #d9d7d7;
+  margin-top: 120px;
+  margin-bottom: 80px;
+  margin-right: 50px;
+  max-width: 300px;
+  min-width: 300px;
+
+  min-height: 670px;
+  max-height: 670px;
+
+  -webkit-box-shadow: 5px 5px 7px 3px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 5px 5px 7px 3px rgba(0, 0, 0, 0.65);
+  box-shadow: 5px 5px 7px 3px rgba(0, 0, 0, 0.65);
+}
+
+.sidebar-content {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.main-content {
+  width: 100rem;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  margin-right: 50px;
+}
+
+.car-content {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card {
+  min-width: 500px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.btn-toolbar {
+  margin-top: 40px;
+  justify-content: center;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
