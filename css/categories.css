@@ -2,22 +2,26 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-.categories-container {
+.container {
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   text-align: center;
   min-width: 334px;
 }
 
-.categories-container img {
+.container img {
   width: 4rem;
   height: auto;
 }
 
-.categories-container button {
+.container button {
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.container h1 {
+  text-align: center;
+  padding: 0.5rem;
 }
