@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/listing.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-light bg-light" style="font-size: 2.5rem">
+        <div class="container-fluid">
+          <ul class="navbar-nav flex-row gap-4">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="bi bi-arrow-left"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center">
+            <a href="#" class="me-4">
+              <i class="bi bi-cart"></i>
+            </a>
+            <a href="#" class="btn btn-primary">Sign In</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="listing-container">
+        <div class="pictures-container">
+          <div
+            id="carouselExampleControls"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="../images/cars/ferrari.jpg"
+                  class="fixed-size-img"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../images/cars/ferrari.jpg"
+                  class="fixed-size-img"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../images/cars/ferrari.jpg"
+                  class="fixed-size-img"
+                  alt="..."
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="details-container">
+          <h1>Ferrari F8 Tributo</h1>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">price</th>
+                <td>50,000</td>
+              </tr>
+              <tr>
+                <th scope="row">horse power</th>
+                <td>578</td>
+              </tr>
+              <tr>
+                <th scope="row">transmision</th>
+                <td colspan="2">automatic</td>
+              </tr>
+              <tr>
+                <th scope="row">fuel</th>
+                <td colspan="2">diesel</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <div class="d-grid gap-2">
+                <button class="btn btn-success btn-lg" type="button">
+                  add to basket
+                </button>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="d-grid gap-2">
+                <button class="btn btn-warning btn-lg" type="button">
+                  manage
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

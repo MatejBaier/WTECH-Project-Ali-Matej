@@ -1,0 +1,28 @@
+header {
+  height: 10vh;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+.listing-container {
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  align-items: center;
+  gap: 10rem;
+  margin-left: 3rem;
+}
+.pictures-container {
+  width: 800px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.details-container {
+  width: 50rem;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.fixed-size-img {
+  width: 800px;
+  height: 600px;
+  object-fit: cover;
+}
