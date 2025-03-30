@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>Listing admin</title>
+    <title>Product | Admin</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,7 +20,7 @@
       defer
     ></script>
     <link rel="stylesheet" href="../css/generic.css" />
-    <link rel="stylesheet" href="../css/listing.css" />
+    <link rel="stylesheet" href="../css/product.css" />
   </head>
   <body>
     <header>
@@ -33,10 +33,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./categories.html">Home</a>
+              <a class="nav-link" href="homeAdmin.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./listing.html">User-view</a>
+              <a class="nav-link" href="product.html">User</a>
             </li>
           </ul>
           <div class="d-flex align-items-center gap-4">
@@ -58,7 +58,7 @@
             <div class="container" style="overflow-y: auto">
               <div class="row row-cols-2">
                 <!-- image 1-->
-                <div class="col-6">
+                <div class="col-6 gy-1">
                   <div
                     class="card"
                     onclick="openModal('../images/cars/ferrari.jpg')"
@@ -71,7 +71,7 @@
                   </div>
                 </div>
                 <!-- image 2-->
-                <div class="col-6">
+                <div class="col-6 gy-1">
                   <div
                     class="card"
                     onclick="openModal('../images/cars/ferrari.jpg')"
@@ -84,7 +84,7 @@
                   </div>
                 </div>
                 <!-- image 3-->
-                <div class="col-6">
+                <div class="col-6 gy-1">
                   <div
                     class="card"
                     onclick="openModal('../images/cars/ferrari.jpg')"
@@ -102,16 +102,19 @@
           <div class="col-10 offset-1 col-md-6 offset-md-0">
             <div class="container">
               <form class="form-container">
-                <label for="name" class="form-label">name:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Ferrari F8 Tributo"
-                  id="name"
-                />
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Name</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Ferrari F8 Tributo"
+                    id="name"
+                  />
+                </div>
                 <hr />
-                <label for="price">Price:</label>
+
                 <div class="input-group mb-3" id="price">
+                  <span class="input-group-text">Price</span>
                   <input
                     type="text"
                     class="form-control"
@@ -120,44 +123,56 @@
                   <span class="input-group-text">€</span>
                 </div>
                 <hr />
-                <label for="enginePower">Engine power in HP:</label>
-                <div class="input-group mb-3" id="enginePower">
-                  <input type="text" class="form-control" placeholder="from" />
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Engine Power</span>
+                  <input type="text" class="form-control" placeholder="578" />
                   <span class="input-group-text">&#128014;</span>
                 </div>
                 <hr />
+
                 <label for="transmision">transmision:</label>
-                <div id="transmision">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="Manual"
-                    />
-                    <label class="form-check-label" for="Manual">Manual</label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="Automatic"
-                    />
-                    <label class="form-check-label" for="Automatic"
-                      >Automatic</label
-                    >
-                  </div>
-                </div>
-                <hr />
-                <label for="fuel">fuel:</label>
-                <div class="row" id="fuel">
-                  <div class="col-6" id="Gasoline">
+                <div class="row" id="transmision">
+                  <div class="col-6 col-md-4 col-xl-3" id="manual">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="flexRadioDefault"
+                        name="transmision"
+                        id="manual"
+                      />
+                      <label class="form-check-label" for="manual"
+                        >Manual</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4 col-xl-3" id="automatic">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="transmision"
+                        id="automatic"
+                        checked
+                      />
+                      <label class="form-check-label" for="automatic"
+                        >Automatic</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <hr />
+
+                <label for="fuel">fuel:</label>
+                <div class="row" id="fuel">
+                  <div class="col-6 col-md-4 col-xl-3" id="Gasoline">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="fuel"
                         id="Gasoline"
                       />
                       <label class="form-check-label" for="Gasoline"
@@ -165,59 +180,175 @@
                       >
                     </div>
                   </div>
-                  <div class="col-6" id="Diesel">
+
+                  <div class="col-6 col-md-4 col-xl-3" id="Diesel">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="flexRadioDefault"
+                        name="fuel"
                         id="Diesel"
+                        checked
                       />
                       <label class="form-check-label" for="Diesel"
                         >Diesel</label
                       >
                     </div>
                   </div>
-                  <div class="col-6" id="LPG">
+
+                  <div class="col-6 col-md-4 col-xl-3" id="LPG">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="flexRadioDefault"
+                        name="fuel"
                         id="LPG"
                       />
                       <label class="form-check-label" for="LPG">LPG</label>
                     </div>
                   </div>
-                  <div class="col-6" id="CNG">
+                </div>
+                <hr />
+                <label for="brand">brand:</label>
+                <div class="row" id="brand">
+                  <div class="col-6 col-md-4 col-xl-3" id="lamborghini">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="flexRadioDefault"
-                        id="CNG"
+                        name="brand"
+                        id="lamborghini"
                       />
-                      <label class="form-check-label" for="CNG">CNG</label>
+                      <label class="form-check-label" for="lamborghini"
+                        >Lamborghini</label
+                      >
                     </div>
                   </div>
-                  <div class="col-6" id="EV">
+
+                  <div class="col-6 col-md-4 col-xl-3" id="audi">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="flexRadioDefault"
-                        id="EV"
+                        name="brand"
+                        id="auid"
                       />
-                      <label class="form-check-label" for="EV">EV</label>
+                      <label class="form-check-label" for="audi">audi</label>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4 col-xl-3" id="bentley">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="brand"
+                        id="bentley"
+                      />
+                      <label class="form-check-label" for="bentley"
+                        >bentley</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4 col-xl-3" id="bmw">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="brand"
+                        id="bmw"
+                        checked
+                      />
+                      <label class="form-check-label" for="bmw">BMW</label>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4 col-xl-3" id="ferrari">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="brand"
+                        id="ferrari"
+                        checked
+                      />
+                      <label class="form-check-label" for="ferrari"
+                        >Ferrari</label
+                      >
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-3" id="jaguar">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="brand"
+                        id="jaguar"
+                      />
+                      <label class="form-check-label" for="jaguar"
+                        >Jaguar</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4 col-xl-3" id="maserati">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="brand"
+                        id="maserati"
+                      />
+                      <label class="form-check-label" for="maserati"
+                        >Maserati</label
+                      >
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 col-xl-3" id="tesla">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="brand"
+                        id="tesla"
+                      />
+                      <label class="form-check-label" for="tesla">Tesla</label>
                     </div>
                   </div>
                 </div>
 
                 <hr />
+
+                <div class="row" style="justify-content: center">
+                  <div class="input-group mb-3" style="max-width: 16rem">
+                    <button
+                      class="btn btn-danger"
+                      type="button"
+                      id="button-minus"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      class="form-control text-center"
+                      value="1"
+                    />
+                    <button
+                      class="btn btn-primary"
+                      type="button"
+                      id="button-plus"
+                    >
+                      +
+                    </button>
+
+                    <button class="btn btn-success btn-sm" type="button">
+                      Add to basket
+                    </button>
+                  </div>
+                </div>
+                <hr />
                 <div class="btn-group w-100" role="group">
-                  <button type="button" class="btn btn-success btn-sm">
-                    add to basket
-                  </button>
                   <button type="button" class="btn btn-danger btn-sm">
                     delete
                   </button>
