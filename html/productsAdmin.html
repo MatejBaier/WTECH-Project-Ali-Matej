@@ -1,275 +1,371 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>products admin</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>products admin</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../css/generic.css" />
+    <link rel="stylesheet" href="../css/products.css" />
+  </head>
 
-  <link rel="stylesheet" href="../css/generic.css" />
-  <link rel="stylesheet" href="../css/products.css" />
-</head>
+  <body>
+    <header>
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <ul class="navbar-nav flex-row gap-4">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="bi bi-arrow-left"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./categories.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./listing.html">User-view</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-4">
+            <span class="badge rounded-pill fs-5 text-white bg-primary"
+              >admin@admin.com</span
+            >
+            <a href="login.html" type="button" class="btn btn-danger">Logout</a>
+            <button type="button" class="btn btn-primary">
+              Cart <span class="badge text-bg-secondary">0</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-<body>
-  <header>
-    <nav class="navbar navbar-light bg-light">
+    <main>
       <div class="container-fluid">
-        <ul class="navbar-nav flex-row gap-4">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="bi bi-arrow-left"></i>
-            </a>
-          </li>
+        <div class="row">
+          <!-- Sidebar -->
+          <div class="container col-10 col-lg-3">
+            <form>
+              <!-- Search -->
+              <label for="searchBar" class="form-label">Search bar</label>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Text input with checkbox"
+                placeholder="search"
+                id="searchBar"
+              />
 
-          <li class="nav-item">
-            <a class="nav-link" href="../html/categories.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./products.html">User-view</a>
-          </li>
-        </ul>
+              <hr />
 
-        <div class="btn-group align-items-center">
-          <a href="#" class="me-4">
-            <i class="bi bi-cart"></i>
-          </a>
-          <a href="#" class="btn btn-warning">admin</a>
-          <a href="./signin.html" class="btn btn-danger">logout</a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Sidebar -->
-        <div class="container col-10 col-lg-3">
-          <form>
-            <!-- Search -->
-            <label for="searchBar" class="form-label">Search bar</label>
-            <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="search"
-              id="searchBar" />
-
-            <hr />
-
-            <!-- price range -->
-            <label for="priceRange">Price:</label>
-            <div class="input-group mb-3" id="priceRange">
-              <input type="text" class="form-control" placeholder="from" />
-              <input type="text" class="form-control" placeholder="to" />
-              <span class="input-group-text">€</span>
-            </div>
-
-            <hr />
-
-            <!-- engine power -->
-
-            <label for="EnginePowerRange">Engine power in HP:</label>
-            <div class="input-group mb-3" id="EnginePowerRange">
-              <input type="text" class="form-control" placeholder="from" />
-              <input type="text" class="form-control" placeholder="to" />
-              <span class="input-group-text">&#128014;</span>
-            </div>
-
-            <hr />
-
-            <!-- transmision -->
-
-            <label for="transmision">Transmision:</label>
-            <div class="row" id="transmision">
-              <div class="form-check col-6">
-                <label class="form-check-label" for="Manual"> Manual </label>
-                <input class="form-check-input" type="checkbox" id="Manual" />
+              <!-- price range -->
+              <label for="priceRange">Price:</label>
+              <div class="input-group mb-3" id="priceRange">
+                <input type="text" class="form-control" placeholder="from" />
+                <input type="text" class="form-control" placeholder="to" />
+                <span class="input-group-text">€</span>
               </div>
 
-              <div class="form-check col-6">
-                <label class="form-check-label" for="Automatic">
-                  Automatic
-                </label>
-                <input class="form-check-input" type="checkbox" id="Automatic" />
-              </div>
-            </div>
+              <hr />
 
-            <hr />
+              <!-- engine power -->
 
-            <!-- fuel -->
-
-            <label for="fuel">Fuel:</label>
-            <div class="row" id="fuel">
-              <div class="form-check col-6">
-                <label class="form-check-label" for="Gasoline">
-                  Gasoline
-                </label>
-                <input class="form-check-input" type="checkbox" id="Gasoline" />
+              <label for="EnginePowerRange">Engine power in HP:</label>
+              <div class="input-group mb-3" id="EnginePowerRange">
+                <input type="text" class="form-control" placeholder="from" />
+                <input type="text" class="form-control" placeholder="to" />
+                <span class="input-group-text">&#128014;</span>
               </div>
 
-              <div class="form-check col-6">
-                <label class="form-check-label" for="Diesel"> Diesel </label>
-                <input class="form-check-input" type="checkbox" id="Diesel" />
-              </div>
-              <div class="form-check col-6">
-                <label class="form-check-label" for="LPG"> LPG </label>
-                <input class="form-check-input" type="checkbox" id="LPG" />
-              </div>
+              <hr />
 
-              <div class="form-check col-6">
-                <label class="form-check-label" for="CNG"> CNG </label>
-                <input class="form-check-input" type="checkbox" id="CNG" />
-              </div>
+              <!-- transmision -->
 
-              <div class="form-check col-6">
-                <label class="form-check-label" for="EV"> EV </label>
-                <input class="form-check-input" type="checkbox" id="EV" />
-              </div>
-            </div>
+              <label for="transmision">Transmision:</label>
+              <div class="row" id="transmision">
+                <div class="form-check col-6">
+                  <label class="form-check-label" for="Manual"> Manual </label>
+                  <input class="form-check-input" type="checkbox" id="Manual" />
+                </div>
 
-            <hr />
-
-            <!-- sort by -->
-            <label for="sortBy">sort by:</label>
-            <div id="sortBy">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="priceLowToHigh" />
-                <label class="form-check-label" for="priceLowToHigh">
-                  price Low To High
-                </label>
+                <div class="form-check col-6">
+                  <label class="form-check-label" for="Automatic">
+                    Automatic
+                  </label>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="Automatic"
+                  />
+                </div>
               </div>
 
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="priceHighToLow" />
-                <label class="form-check-label" for="priceHighToLow">
-                  Price high to low
-                </label>
+              <hr />
+
+              <!-- fuel -->
+
+              <label for="fuel">Fuel:</label>
+              <div class="row" id="fuel">
+                <div class="form-check col-6">
+                  <label class="form-check-label" for="Gasoline">
+                    Gasoline
+                  </label>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="Gasoline"
+                  />
+                </div>
+
+                <div class="form-check col-6">
+                  <label class="form-check-label" for="Diesel"> Diesel </label>
+                  <input class="form-check-input" type="checkbox" id="Diesel" />
+                </div>
+                <div class="form-check col-6">
+                  <label class="form-check-label" for="LPG"> LPG </label>
+                  <input class="form-check-input" type="checkbox" id="LPG" />
+                </div>
+
+                <div class="form-check col-6">
+                  <label class="form-check-label" for="CNG"> CNG </label>
+                  <input class="form-check-input" type="checkbox" id="CNG" />
+                </div>
+
+                <div class="form-check col-6">
+                  <label class="form-check-label" for="EV"> EV </label>
+                  <input class="form-check-input" type="checkbox" id="EV" />
+                </div>
               </div>
-            </div>
 
-            <hr />
+              <hr />
 
-            <!-- submit -->
+              <!-- sort by -->
+              <label for="sortBy">sort by:</label>
+              <div id="sortBy">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="priceLowToHigh"
+                  />
+                  <label class="form-check-label" for="priceLowToHigh">
+                    price Low To High
+                  </label>
+                </div>
 
-            <div class="btn-group me-2 w-100">
-              <button class="btn btn-primary btn-sm" type="button">
-                Search
-              </button>
-              <button class="btn btn-success btn-sm" type="button" onclick="document.location='./newListingAdmin.html'">
-                new product
-              </button>
-            </div>
-          </form>
-        </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="priceHighToLow"
+                  />
+                  <label class="form-check-label" for="priceHighToLow">
+                    Price high to low
+                  </label>
+                </div>
+              </div>
 
-        <!-- content -->
-        <div class="container col-10 col-lg-8">
-          <div class="row">
-            <!-- car 1 -->
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="card">
-                <div class="row">
-                  <div class="col-12 col-md-4 col-sm-4">
-                    <img src="../images/cars/ferrari.jpg" class="img-fluid rounded-start" alt="Ferrari" />
-                  </div>
-                  <div class="col-md-8 col-sm-7">
-                    <div class="card-body">
-                      <h1 class="card-title">Ferrari F8 Tributo</h1>
-                      <p class="card-text">Price: 50,000</p>
-                      <div class="row">
-                        <div class="btn-group me-2" role="group" aria-label="Second group">
-                          <a href="listingAdmin.html" class="btn btn-warning btn-sm">manage</a>
-                          <a href="#" class="btn btn-success btn-sm">add</a>
+              <hr />
+
+              <!-- submit -->
+
+              <div class="btn-group me-2 w-100">
+                <button class="btn btn-primary btn-sm" type="button">
+                  Search
+                </button>
+                <button
+                  class="btn btn-success btn-sm"
+                  type="button"
+                  onclick="document.location='./newListingAdmin.html'"
+                >
+                  new product
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- content -->
+          <div class="container col-10 col-lg-8">
+            <div class="row">
+              <!-- car 1 -->
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-12 col-md-4 col-sm-4">
+                      <img
+                        src="../images/cars/ferrari.jpg"
+                        class="img-fluid rounded-start"
+                        alt="Ferrari"
+                      />
+                    </div>
+                    <div class="col-md-8 col-sm-7">
+                      <div class="card-body">
+                        <h1 class="card-title">Ferrari F8 Tributo</h1>
+                        <p class="card-text">Price: 50,000</p>
+                        <div class="row">
+                          <div
+                            class="btn-group me-2"
+                            role="group"
+                            aria-label="Second group"
+                          >
+                            <a
+                              href="listingAdmin.html"
+                              class="btn btn-warning btn-sm"
+                              >manage</a
+                            >
+                            <a href="#" class="btn btn-success btn-sm">add</a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- car 2 -->
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="card">
-                <div class="row">
-                  <div class="col-md-4 col-sm-4">
-                    <img src="../images/cars/ferrari.jpg" class="img-fluid rounded-start" alt="Ferrari" />
-                  </div>
-                  <div class="col-md-8 col-sm-7">
-                    <div class="card-body">
-                      <h1 class="card-title">Ferrari F8 Tributo</h1>
-                      <p class="card-text">Price: 50,000</p>
-                      <div class="row">
-                        <div class="btn-group me-2" role="group" aria-label="Second group">
-                          <a href="listingAdmin.html" class="btn btn-warning btn-sm">manage</a>
-                          <a href="#" class="btn btn-success btn-sm">add</a>
+              <!-- car 2 -->
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                      <img
+                        src="../images/cars/ferrari.jpg"
+                        class="img-fluid rounded-start"
+                        alt="Ferrari"
+                      />
+                    </div>
+                    <div class="col-md-8 col-sm-7">
+                      <div class="card-body">
+                        <h1 class="card-title">Ferrari F8 Tributo</h1>
+                        <p class="card-text">Price: 50,000</p>
+                        <div class="row">
+                          <div
+                            class="btn-group me-2"
+                            role="group"
+                            aria-label="Second group"
+                          >
+                            <a
+                              href="listingAdmin.html"
+                              class="btn btn-warning btn-sm"
+                              >manage</a
+                            >
+                            <a href="#" class="btn btn-success btn-sm">add</a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- car 3 -->
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="card">
-                <div class="row">
-                  <div class="col-md-4 col-sm-4">
-                    <img src="../images/cars/ferrari.jpg" class="img-fluid rounded-start" alt="Ferrari" />
-                  </div>
-                  <div class="col-md-8 col-sm-7">
-                    <div class="card-body">
-                      <h1 class="card-title">Ferrari F8 Tributo</h1>
-                      <p class="card-text">Price: 50,000</p>
-                      <div class="row">
-                        <div class="btn-group me-2" role="group" aria-label="Second group">
-                          <a href="listingAdmin.html" class="btn btn-warning btn-sm">manage</a>
-                          <a href="#" class="btn btn-success btn-sm">add</a>
+              <!-- car 3 -->
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                      <img
+                        src="../images/cars/ferrari.jpg"
+                        class="img-fluid rounded-start"
+                        alt="Ferrari"
+                      />
+                    </div>
+                    <div class="col-md-8 col-sm-7">
+                      <div class="card-body">
+                        <h1 class="card-title">Ferrari F8 Tributo</h1>
+                        <p class="card-text">Price: 50,000</p>
+                        <div class="row">
+                          <div
+                            class="btn-group me-2"
+                            role="group"
+                            aria-label="Second group"
+                          >
+                            <a
+                              href="listingAdmin.html"
+                              class="btn btn-warning btn-sm"
+                              >manage</a
+                            >
+                            <a href="#" class="btn btn-success btn-sm">add</a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- car 4 -->
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="card">
-                <div class="row">
-                  <div class="col-md-4 col-sm-4">
-                    <img src="../images/cars/ferrari.jpg" class="img-fluid rounded-start" alt="Ferrari" />
-                  </div>
-                  <div class="col-md-8 col-sm-7">
-                    <div class="card-body">
-                      <h1 class="card-title">Ferrari F8 Tributo</h1>
-                      <p class="card-text">Price: 50,000</p>
-                      <div class="row">
-                        <div class="btn-group me-2" role="group" aria-label="Second group">
-                          <a href="listingAdmin.html" class="btn btn-warning btn-sm">manage</a>
-                          <a href="#" class="btn btn-success btn-sm">add</a>
+              <!-- car 4 -->
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                      <img
+                        src="../images/cars/ferrari.jpg"
+                        class="img-fluid rounded-start"
+                        alt="Ferrari"
+                      />
+                    </div>
+                    <div class="col-md-8 col-sm-7">
+                      <div class="card-body">
+                        <h1 class="card-title">Ferrari F8 Tributo</h1>
+                        <p class="card-text">Price: 50,000</p>
+                        <div class="row">
+                          <div
+                            class="btn-group me-2"
+                            role="group"
+                            aria-label="Second group"
+                          >
+                            <a
+                              href="listingAdmin.html"
+                              class="btn btn-warning btn-sm"
+                              >manage</a
+                            >
+                            <a href="#" class="btn btn-success btn-sm">add</a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- car 5 -->
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="card">
-                <div class="row">
-                  <div class="col-md-4 col-sm-4">
-                    <img src="../images/cars/ferrari.jpg" class="img-fluid rounded-start" alt="Ferrari" />
-                  </div>
-                  <div class="col-md-8 col-sm-7">
-                    <div class="card-body">
-                      <h1 class="card-title">Ferrari F8 Tributo</h1>
-                      <p class="card-text">Price: 50,000</p>
-                      <div class="row">
-                        <div class="btn-group me-2" role="group" aria-label="Second group">
-                          <a href="listingAdmin.html" class="btn btn-warning btn-sm">manage</a>
-                          <a href="#" class="btn btn-success btn-sm">add</a>
+              <!-- car 5 -->
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                      <img
+                        src="../images/cars/ferrari.jpg"
+                        class="img-fluid rounded-start"
+                        alt="Ferrari"
+                      />
+                    </div>
+                    <div class="col-md-8 col-sm-7">
+                      <div class="card-body">
+                        <h1 class="card-title">Ferrari F8 Tributo</h1>
+                        <p class="card-text">Price: 50,000</p>
+                        <div class="row">
+                          <div
+                            class="btn-group me-2"
+                            role="group"
+                            aria-label="Second group"
+                          >
+                            <a
+                              href="listingAdmin.html"
+                              class="btn btn-warning btn-sm"
+                              >manage</a
+                            >
+                            <a href="#" class="btn btn-success btn-sm">add</a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -278,21 +374,19 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="btn-toolbar col-12" role="toolbar">
-          <div class="btn-group me-2" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-secondary">&lt;</button>
-            <button type="button" class="btn btn-secondary">1</button>
-            <button type="button" class="btn btn-secondary">2</button>
-            <button type="button" class="btn btn-secondary">3</button>
-            <button type="button" class="btn btn-secondary">4</button>
-            <button type="button" class="btn btn-secondary">&gt;</button>
+          <div class="btn-toolbar col-12" role="toolbar">
+            <div class="btn-group me-2" role="group" aria-label="Second group">
+              <button type="button" class="btn btn-secondary">&lt;</button>
+              <button type="button" class="btn btn-secondary">1</button>
+              <button type="button" class="btn btn-secondary">2</button>
+              <button type="button" class="btn btn-secondary">3</button>
+              <button type="button" class="btn btn-secondary">4</button>
+              <button type="button" class="btn btn-secondary">&gt;</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
-</body>
-
+    </main>
+  </body>
 </html>
