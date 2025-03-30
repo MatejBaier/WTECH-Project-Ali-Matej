@@ -1,21 +1,6 @@
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .container {
   text-align: center;
-  max-width: 500px;
-  min-width: 334px;
   padding: 2.5rem;
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-}
-
-.inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }

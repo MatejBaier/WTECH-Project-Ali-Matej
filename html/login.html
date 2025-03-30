@@ -25,7 +25,7 @@
     <header>
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <ul class="navbar-nav flex-row gap-4">
+          <ul class="navbar-nav flex-row gap-1">
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <i class="bi bi-arrow-left"></i>
@@ -38,7 +38,7 @@
           </ul>
 
           <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-sm btn-primary">
               Cart <span class="badge text-bg-secondary">0</span>
             </button>
           </div>
@@ -46,36 +46,76 @@
       </nav>
     </header>
     <main>
-      <div class="container">
-        <form action="../html/categories.html">
-          <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
-          <div class="inputs">
-            <input
-              type="email"
-              id="loginEmail"
-              class="form-control"
-              placeholder="Email address"
-              required
-            />
-            <input
-              type="password"
-              id="loginPassword"
-              class="form-control"
-              placeholder="Password"
-              required
-            />
-            <button
-              class="btn btn-sm btn-primary btn-block w-100"
-              type="submit"
-            >
-              login
-            </button>
-          </div>
-        </form>
-        <hr />
+      <div class="container-fluid">
+        <div class="row">
+          <div class="container col-8 offset-2 mb-4 gy-4">
+            <!-- LOGIN FORM-->
+            <form class="needs-validation" novalidate>
+              <h1 class="h3 mb-3 font-weight-normal">Login</h1>
 
-        <a href="register.html">Don't have an account?</a>
+              <!-- email -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4"
+                  >Email address</span
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="Email address"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid email address.
+                </div>
+              </div>
+
+              <!-- password -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4">Password</span>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Password"
+                  required
+                />
+                <div class="invalid-feedback">Please enter a password.</div>
+              </div>
+
+              <button
+                class="btn btn-sm btn-primary btn-block w-100"
+                type="submit"
+              >
+                login
+              </button>
+            </form>
+            <hr />
+            <a href="register.html">Don't have an account?</a>
+          </div>
+        </div>
       </div>
     </main>
+    <script>
+      (() => {
+        "use strict";
+        const forms = document.querySelectorAll(".needs-validation");
+
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
   </body>
 </html>

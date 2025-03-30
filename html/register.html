@@ -25,7 +25,7 @@
     <header>
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <ul class="navbar-nav flex-row gap-4">
+          <ul class="navbar-nav flex-row gap-1">
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <i class="bi bi-arrow-left"></i>
@@ -38,7 +38,7 @@
           </ul>
 
           <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-sm btn-primary">
               Cart <span class="badge text-bg-secondary">0</span>
             </button>
           </div>
@@ -47,81 +47,161 @@
     </header>
 
     <main>
-      <div class="container">
-        <!-- REGISTER FORM-->
-        <form>
-          <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-          <div class="inputs">
-            <input
-              type="email"
-              id="registerEmail"
-              class="form-control"
-              placeholder="Email address"
-              required
-            />
-            <input
-              type="password"
-              id="registerPassword"
-              class="form-control"
-              placeholder="Password"
-              required
-            />
-            <input
-              type="password"
-              id="inputPassword2"
-              class="form-control"
-              placeholder="Confirm password"
-              required
-            />
+      <div class="container-fluid">
+        <div class="row">
+          <div class="container col-8 offset-2 mb-4 gy-4">
+            <!-- REGISTER FORM-->
+            <form class="needs-validation" novalidate>
+              <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+              <!-- email -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4"
+                  >Email address</span
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="Email address"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please choose a valid email address.
+                </div>
+              </div>
+
+              <!-- password -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4">Password</span>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Password"
+                  required
+                />
+                <div class="invalid-feedback">Please choose a password.</div>
+              </div>
+
+              <hr />
+              <!-- Full name -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4">Full name</span>
+                <input
+                  type="text"
+                  id="fullName"
+                  class="form-control"
+                  placeholder="Full name"
+                  required
+                />
+                <div class="invalid-feedback">Please choose full name.</div>
+              </div>
+
+              <!-- Phone number-->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4"
+                  >Phone number</span
+                >
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  class="form-control"
+                  placeholder="Phone number"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please choose a phone number.
+                </div>
+              </div>
+              <hr />
+              <!-- State -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4">State</span>
+                <input
+                  type="text"
+                  id="state"
+                  class="form-control"
+                  placeholder="Slovakia"
+                  required
+                />
+                <div class="invalid-feedback">Please choose a state.</div>
+              </div>
+              <!-- City -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4">City</span>
+                <input
+                  type="text"
+                  id="city"
+                  class="form-control"
+                  placeholder="City"
+                  required
+                />
+                <div class="invalid-feedback">Please choose a city.</div>
+              </div>
+
+              <!-- Address -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4">Address</span>
+                <input
+                  type="text"
+                  id="address"
+                  class="form-control"
+                  placeholder="Address"
+                  required
+                />
+
+                <div class="invalid-feedback">Please choose a address.</div>
+              </div>
+              <!-- Postal code -->
+              <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4"
+                  >Postal code</span
+                >
+                <input
+                  type="text"
+                  id="city"
+                  class="form-control"
+                  placeholder="Postal code"
+                  required
+                />
+                <div class="invalid-feedback">Please choose a postal code.</div>
+              </div>
+              <hr />
+              <button
+                class="btn btn-sm btn-primary btn-block w-100"
+                type="submit"
+              >
+                register
+              </button>
+            </form>
             <hr />
-            <input
-              type="text"
-              id="firstnName"
-              class="form-control"
-              placeholder="First name"
-              required
-            />
-            <input
-              type="text"
-              id="lastName"
-              class="form-control"
-              placeholder="Last name"
-              required
-            />
-            <hr />
-            <input
-              type="text"
-              id="city"
-              class="form-control"
-              placeholder="City"
-              required
-            />
-            <input
-              type="text"
-              id="street"
-              class="form-control"
-              placeholder="Street"
-              required
-            />
-            <input
-              type="number"
-              id="postalCode"
-              class="form-control"
-              placeholder="Postal code"
-              required
-            />
-            <hr />
-            <button
-              class="btn btn-sm btn-primary btn-block w-100"
-              type="submit"
-            >
-              register
-            </button>
+            <a href="login.html">Already have an account?</a>
           </div>
-        </form>
-        <hr />
-        <a href="login.html">Already have an account?</a>
+        </div>
       </div>
     </main>
+
+    <script>
+      (() => {
+        "use strict";
+        const forms = document.querySelectorAll(".needs-validation");
+
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
   </body>
 </html>

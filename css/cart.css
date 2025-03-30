@@ -18,20 +18,3 @@
 .card h1 {
   font-size: 1rem;
 }
-
-.btn-toolbar {
-  justify-content: center;
-  padding: 2rem;
-}
-
-.categories img {
-  width: 3rem;
-  height: auto;
-}
-
-.categories button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}

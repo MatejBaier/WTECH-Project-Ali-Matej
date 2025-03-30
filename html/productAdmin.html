@@ -26,7 +26,7 @@
     <header>
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <ul class="navbar-nav flex-row gap-4">
+          <ul class="navbar-nav flex-row gap-1">
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <i class="bi bi-arrow-left"></i>
@@ -39,12 +39,14 @@
               <a class="nav-link" href="product.html">User</a>
             </li>
           </ul>
-          <div class="d-flex align-items-center gap-4">
-            <span class="badge rounded-pill fs-5 text-white bg-primary"
+          <div class="d-flex align-items-center gap-1">
+            <span class="badge rounded-pill fs-6 text-white bg-primary"
               >admin@admin.com</span
             >
-            <a href="login.html" type="button" class="btn btn-danger">Logout</a>
-            <button type="button" class="btn btn-primary">
+            <a href="login.html" type="button" class="btn btn-sm btn-danger"
+              >Logout</a
+            >
+            <button type="button" class="btn btn-sm btn-primary">
               Cart <span class="badge text-bg-secondary">0</span>
             </button>
           </div>
@@ -321,26 +323,13 @@
                 <hr />
 
                 <div class="row" style="justify-content: center">
-                  <div class="input-group mb-3" style="max-width: 16rem">
-                    <button
-                      class="btn btn-danger"
-                      type="button"
-                      id="button-minus"
-                    >
-                      -
-                    </button>
+                  <div class="input-group mb-3" style="max-width: 24rem">
+                    <span class="input-group-text">Quantity</span>
                     <input
                       type="number"
                       class="form-control text-center"
                       value="1"
                     />
-                    <button
-                      class="btn btn-primary"
-                      type="button"
-                      id="button-plus"
-                    >
-                      +
-                    </button>
 
                     <button class="btn btn-success btn-sm" type="button">
                       Add to basket
