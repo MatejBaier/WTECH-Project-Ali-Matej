@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    >
+    <title>Home page | Ferrari</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    >
+
+    <link rel="stylesheet" href="../css/generic.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <ul class="navbar-nav flex-row gap-1">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/home') }}">Admin</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center gap-1">
+                    @auth()
+                        <div class="d-flex align-items-center gap-1">
+                            <span class="badge rounded-pill fs-6 text-white bg-primary">{{ auth()->user()->full_name }}</span>
+                            <form action="{{ url('/perform_log_out') }}" method="POST" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-danger">Logout</button>
+                            </form>
+                        </div>
+                    @else
+                        <div
+                            class="btn-group"
+                            role="group"
+                            aria-label="Basic outlined example"
+                        >
+                            <a href="{{ url('/login') }}" class="btn btn-sm btn-outline-primary">Login</a>
+                            <a href="{{ url('/register') }}" class="btn btn-sm btn-outline-primary">Register</a>
+                        </div>
+                @endauth
+                <a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
+                    Cart <span class="badge text-bg-secondary">3</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container categories col-10 offset-1">
+                <h3 style="text-align: center">Categories</h3>
+                <div class="row gy-1">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img src="../images/logos/all.png" alt="logo" class="me-2">
+                            <span>All</span>
+                        </button>
+                    </div>
+
+                    <!-- Category 1 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img src="../images/logos/audi.png" alt="logo" class="me-2">
+                            <span>Audi</span>
+                        </button>
+                    </div>
+                    <!-- Category 2 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img
+                                src="../images/logos/bentley.png"
+                                alt="logo"
+                                class="me-2"
+                            >
+                            <span>Bentley</span>
+                        </button>
+                    </div>
+                    <!-- Category 3 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img src="../images/logos/bmw.png" alt="logo" class="me-2">
+                            <span>BMW</span>
+                        </button>
+                    </div>
+                    <!-- Category 4 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-primary">
+                            <img
+                                src="../images/logos/ferrari.png"
+                                alt="logo"
+                                class="me-2"
+                            >
+                            <span>Ferrari</span>
+                        </button>
+                    </div>
+                    <!-- Category 5 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img
+                                src="../images/logos/jaguar.png"
+                                alt="logo"
+                                class="me-2"
+                            >
+                            <span>Jaguar</span>
+                        </button>
+                    </div>
+                    <!-- Category 6 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img
+                                src="../images/logos/lamborghini.png"
+                                alt="logo"
+                                class="me-2"
+                            >
+                            <span>Lamborghini</span>
+                        </button>
+                    </div>
+                    <!-- Category 7 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img
+                                src="../images/logos/maserati.png"
+                                alt="logo"
+                                class="me-2"
+                            >
+                            <span>Maserati</span>
+                        </button>
+                    </div>
+                    <!-- Category 8 -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button type="button" class="btn btn-sm btn-secondary">
+                            <img
+                                src="../images/logos/tesla.png"
+                                alt="logo"
+                                class="me-2"
+                            >
+                            <span>Tesla</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="container col-10 col-lg-3">
+                <h4 style="text-align: center">Sidebar</h4>
+                <form>
+                    <hr>
+                    <!-- Search -->
+                    <label for="searchBar" class="form-label">Search bar:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        aria-label="Text input with checkbox"
+                        placeholder="search"
+                        id="searchBar"
+                    >
+
+                    <hr>
+
+                    <!-- price range -->
+                    <label>Price:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="from">
+                        <input type="text" class="form-control" placeholder="to">
+                        <span class="input-group-text">€</span>
+                    </div>
+
+                    <hr>
+
+                    <!-- engine power -->
+
+                    <label>Engine power in HP:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="from">
+                        <input type="text" class="form-control" placeholder="to">
+                        <span class="input-group-text">&#128014;</span>
+                    </div>
+
+                    <hr>
+
+                    <!-- transmision -->
+
+                    <label>Transmision:</label>
+                    <div class="row">
+                        <div class="form-check col-6">
+                            <label class="form-check-label" for="Manual"> Manual </label>
+                            <input class="form-check-input" type="checkbox" id="Manual">
+                        </div>
+
+                        <div class="form-check col-6">
+                            <label class="form-check-label" for="Automatic">
+                                Automatic
+                            </label>
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="Automatic"
+                            >
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- fuel -->
+
+                    <label>Fuel:</label>
+                    <div class="row">
+                        <div class="form-check col-6">
+                            <label class="form-check-label" for="Gasoline">
+                                Gasoline
+                            </label>
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="Gasoline"
+                            >
+                        </div>
+
+                        <div class="form-check col-6">
+                            <label class="form-check-label" for="Diesel"> Diesel </label>
+                            <input class="form-check-input" type="checkbox" id="Diesel">
+                        </div>
+                        <div class="form-check col-6">
+                            <label class="form-check-label" for="LPG"> LPG </label>
+                            <input class="form-check-input" type="checkbox" id="LPG">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- submit -->
+
+                    <div class="btn-group me-2 w-100">
+                        <button class="btn btn-primary btn-sm" type="button">
+                            Search
+                        </button>
+                    </div>
+                </form>
+                <hr>
+            </div>
+
+            <!-- content -->
+            <div class="container col-10 col-lg-8">
+                <!--Sorting-->
+                <div class="row gy-1">
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="btnradio"
+                            id="lowToHigh"
+                            checked
+                        >
+                        <label
+                            class="btn btn-sm btn-outline-primary w-100"
+                            for="lowToHigh"
+                        >Price Low to High</label
+                        >
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="btnradio"
+                            id="highToLow"
+                        >
+                        <label
+                            class="btn btn-sm btn-outline-primary w-100"
+                            for="highToLow"
+                        >Price High to Low</label
+                        >
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="btnradio"
+                            id="HpHighToLow"
+                        >
+                        <label
+                            class="btn btn-sm btn-outline-primary w-100"
+                            for="HpHighToLow"
+                        >Horse power High to Low</label
+                        >
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="btnradio"
+                            id="HpLowToHigh"
+                        >
+                        <label
+                            class="btn btn-sm btn-outline-primary w-100"
+                            for="HpLowToHigh"
+                        >Horse power Low to High</label
+                        >
+                    </div>
+                </div>
+
+                <hr>
+                <!--Cars-->
+                <div class="row">
+                    <!-- car 1 -->
+                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-5 col-md-4 col-lg-12">
+                                    <img
+                                        src="../images/cars/ferrari_1.jpg"
+                                        class="object-fit-contain"
+                                        alt="Ferrari"
+                                    >
+                                </div>
+                                <div class="col-sm-7 col-md-8 col-lg-12">
+                                    <div class="card-body">
+                                        <h1 class="card-title">Ferrari F8 Tributo</h1>
+                                        <p class="card-text">Price: 50,000 €</p>
+                                        <div class="row w-100">
+                                            <div
+                                                class="btn-group me-2"
+                                                role="group"
+                                                aria-label="Second group"
+                                            >
+                                                <a
+                                                    href="product.html"
+                                                    class="btn btn-primary btn-sm"
+                                                >View</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- car 2 -->
+                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-5 col-md-4 col-lg-12">
+                                    <img
+                                        src="../images/cars/ferrari_2.jpg"
+                                        class="object-fit-contain"
+                                        alt="Ferrari"
+                                    >
+                                </div>
+                                <div class="col-sm-7 col-md-8 col-lg-12">
+                                    <div class="card-body">
+                                        <h1 class="card-title">Ferrari Torronto</h1>
+                                        <p class="card-text">Price: 60,000 €</p>
+                                        <div class="row w-100">
+                                            <div
+                                                class="btn-group me-2"
+                                                role="group"
+                                                aria-label="Second group"
+                                            >
+                                                <a
+                                                    href="product.html"
+                                                    class="btn btn-primary btn-sm"
+                                                >View</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- car 3 -->
+                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-5 col-md-4 col-lg-12">
+                                    <img
+                                        src="../images/cars/ferrari_3.jpg"
+                                        class="object-fit-contain"
+                                        alt="Ferrari"
+                                    >
+                                </div>
+                                <div class="col-sm-7 col-md-8 col-lg-12">
+                                    <div class="card-body">
+                                        <h1 class="card-title">Ferrari Ohio</h1>
+                                        <p class="card-text">Price: 70,000 €</p>
+                                        <div class="row w-100">
+                                            <div
+                                                class="btn-group me-2"
+                                                role="group"
+                                                aria-label="Second group"
+                                            >
+                                                <a
+                                                    href="product.html"
+                                                    class="btn btn-primary btn-sm"
+                                                >View</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- car 4 -->
+                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-5 col-md-4 col-lg-12">
+                                    <img
+                                        src="../images/cars/ferrari_4.jpg"
+                                        class="object-fit-contain"
+                                        alt="Ferrari"
+                                    >
+                                </div>
+                                <div class="col-sm-7 col-md-8 col-lg-12">
+                                    <div class="card-body">
+                                        <h1 class="card-title">Ferrari Sport</h1>
+                                        <p class="card-text">Price: 80,000 €</p>
+                                        <div class="row w-100">
+                                            <div
+                                                class="btn-group me-2"
+                                                role="group"
+                                                aria-label="Second group"
+                                            >
+                                                <a
+                                                    href="product.html"
+                                                    class="btn btn-primary btn-sm"
+                                                >View</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- car 5 -->
+                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-5 col-md-4 col-lg-12">
+                                    <img
+                                        src="../images/cars/ferrari_5.jpg"
+                                        class="object-fit-contain"
+                                        alt="Ferrari"
+                                    >
+                                </div>
+                                <div class="col-sm-7 col-md-8 col-lg-12">
+                                    <div class="card-body">
+                                        <h1 class="card-title">Ferrari Jablko</h1>
+                                        <p class="card-text">Price: 90,000 €</p>
+                                        <div class="row w-100">
+                                            <div
+                                                class="btn-group me-2"
+                                                role="group"
+                                                aria-label="Second group"
+                                            >
+                                                <a
+                                                    href="product.html"
+                                                    class="btn btn-primary btn-sm"
+                                                >View</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-toolbar col-12" role="toolbar">
+                <div class="btn-group me-2" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-secondary">&lt;</button>
+                    <button type="button" class="btn btn-secondary">1</button>
+                    <button type="button" class="btn btn-secondary">2</button>
+                    <button type="button" class="btn btn-secondary">3</button>
+                    <button type="button" class="btn btn-secondary">4</button>
+                    <button type="button" class="btn btn-secondary">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

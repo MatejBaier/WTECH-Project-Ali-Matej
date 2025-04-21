@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    >
+    <title>Register</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    >
+    <link rel="stylesheet" href="../css/generic.css">
+    <link rel="stylesheet" href="../css/signin.css">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <ul class="navbar-nav flex-row gap-1">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                <a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
+                    Cart <span class="badge text-bg-secondary">3</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container col-8 offset-2 mb-4 gy-4">
+                <!-- REGISTER FORM-->
+                <form action="/perform_registration" method="POST" class="needs-validation" novalidate>
+                    @csrf
+
+                    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+                    <!-- email -->
+                    <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4"
+                >Email address</span
+                >
+                        <input
+                            name="email"
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="email address"
+                            required
+                        >
+                        <div class="invalid-feedback">
+                            Please choose a valid email address.
+                        </div>
+                    </div>
+
+                    <!-- password -->
+                    <div class="row input-group mb-2">
+                        <span class="input-group-text col-12 col-md-4">Password</span>
+                        <input
+                            name="password"
+                            type="password"
+                            id="password"
+                            class="form-control"
+                            placeholder="password"
+                            required
+                        >
+                        <div class="invalid-feedback">Please choose a password.</div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="row input-group mb-2">
+                        <span class="input-group-text col-12 col-md-4">Confirm Password</span>
+                        <input
+                            name="password_confirmation"
+                            type="password"
+                            id="passwordConfirmation"
+                            class="form-control"
+                            placeholder="confirm password"
+                            required
+                        >
+                        <div class="invalid-feedback">Please confirm your password.</div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Full name -->
+                    <div class="row input-group mb-2">
+                        <span class="input-group-text col-12 col-md-4">Full name</span>
+                        <input
+                            name="full_name"
+                            type="text"
+                            id="fullName"
+                            class="form-control"
+                            placeholder="full name"
+                            required
+                        >
+                        <div class="invalid-feedback">Please choose full name.</div>
+                    </div>
+
+                    <!-- Phone number-->
+                    <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4"
+                >Phone number</span
+                >
+                        <input
+                            name="phone_number"
+                            type="tel"
+                            id="phoneNumber"
+                            class="form-control"
+                            placeholder="phone number"
+                            required
+                        >
+                        <div class="invalid-feedback">
+                            Please choose a phone number.
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- State -->
+                    <div class="row input-group mb-2">
+                        <span class="input-group-text col-12 col-md-4">State</span>
+                        <input
+                            name="state"
+                            type="text"
+                            id="state"
+                            class="form-control"
+                            placeholder="slovakia"
+                            required
+                        >
+                        <div class="invalid-feedback">Please choose a state.</div>
+                    </div>
+                    <!-- City -->
+                    <div class="row input-group mb-2">
+                        <span class="input-group-text col-12 col-md-4">City</span>
+                        <input
+                            name="city"
+                            type="text"
+                            id="city"
+                            class="form-control"
+                            placeholder="city"
+                            required
+                        >
+                        <div class="invalid-feedback">Please choose a city.</div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="row input-group mb-2">
+                        <span class="input-group-text col-12 col-md-4">Address</span>
+                        <input
+                            name="address"
+                            type="text"
+                            id="address"
+                            class="form-control"
+                            placeholder="address"
+                            required
+                        >
+
+                        <div class="invalid-feedback">Please choose a address.</div>
+                    </div>
+                    <!-- Postal code -->
+                    <div class="row input-group mb-2">
+                <span class="input-group-text col-12 col-md-4"
+                >Postal code</span
+                >
+                        <input
+                            name="postal_code"
+                            type="text"
+                            id="postalCode"
+                            class="form-control"
+                            placeholder="postal code"
+                            required
+                        >
+                        <div class="invalid-feedback">Please choose a postal code.</div>
+                    </div>
+                    <hr>
+                    <button
+                        class="btn btn-sm btn-primary btn-block w-100"
+                        type="submit"
+                    >
+                        Register
+                    </button>
+                </form>
+                <hr>
+                <a href="{{ url('/login') }}">Already have an account?</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+{{--<script>
+    (() => {
+        "use strict";
+        const forms = document.querySelectorAll(".needs-validation");
+
+        Array.from(forms).forEach((form) => {
+            form.addEventListener(
+                "submit",
+                (event) => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add("was-validated");
+                },
+                false
+            );
+        });
+    })();
+</script>--}}
+</body>
+</html>
