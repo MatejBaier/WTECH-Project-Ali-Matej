@@ -7,7 +7,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
     >
-    <title>Home page | Ferrari</title>
+    <title>Home page</title>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -17,8 +17,8 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
     >
 
-    <link rel="stylesheet" href="../css/generic.css">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="{{ asset('css/generic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
 <body>
@@ -70,91 +70,91 @@
                 <h3 style="text-align: center">Categories</h3>
                 <div class="row gy-1">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img src="../images/logos/all.png" alt="logo" class="me-2">
+                        <a href="{{ route('products.filter', ['brand' => 'all']) }}" class="btn btn-sm {{ request('brand') === 'all' || !request('brand') ? 'btn-primary' : 'btn-secondary' }}">
+                        <img src="{{ asset('images/logos/all.png') }}" alt="logo" class="me-2">
                             <span>All</span>
-                        </button>
+                        </a>
                     </div>
 
                     <!-- Category 1 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img src="../images/logos/audi.png" alt="logo" class="me-2">
+                        <a href="{{ route('products.filter', ['brand' => 'audi']) }}" class="btn btn-sm {{ request('brand') === 'audi' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img src="{{ asset('images/logos/audi.png') }}" alt="logo" class="me-2">
                             <span>Audi</span>
-                        </button>
+                        </a>
                     </div>
                     <!-- Category 2 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img
-                                src="../images/logos/bentley.png"
+                        <a href="{{ route('products.filter', ['brand' => 'bentley']) }}" class="btn btn-sm {{ request('brand') === 'bentley' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img
+                                src="{{ asset('images/logos/bentley.png') }}"
                                 alt="logo"
                                 class="me-2"
                             >
                             <span>Bentley</span>
-                        </button>
+                        </a>
                     </div>
                     <!-- Category 3 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img src="../images/logos/bmw.png" alt="logo" class="me-2">
+                        <a href="{{ route('products.filter', ['brand' => 'bmw']) }}" class="btn btn-sm {{ request('brand') === 'bmw' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img src="{{ asset('images/logos/bmw.png') }}" alt="logo" class="me-2">
                             <span>BMW</span>
-                        </button>
+                        </a>
                     </div>
                     <!-- Category 4 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-primary">
-                            <img
-                                src="../images/logos/ferrari.png"
+                        <a href="{{ route('products.filter', ['brand' => 'ferrari']) }}" class="btn btn-sm {{ request('brand') === 'ferrari' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img
+                                src="{{ asset('images/logos/ferrari.png') }}"
                                 alt="logo"
                                 class="me-2"
                             >
                             <span>Ferrari</span>
-                        </button>
+                        </a>
                     </div>
                     <!-- Category 5 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img
-                                src="../images/logos/jaguar.png"
+                        <a href="{{ route('products.filter', ['brand' => 'jaguar']) }}" class="btn btn-sm {{ request('brand') === 'jaguar' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img
+                                src="{{ asset('images/logos/jaguar.png') }}"
                                 alt="logo"
                                 class="me-2"
                             >
                             <span>Jaguar</span>
-                        </button>
+                        </a>
                     </div>
                     <!-- Category 6 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img
-                                src="../images/logos/lamborghini.png"
+                        <a href="{{ route('products.filter', ['brand' => 'lamborghini']) }}" class="btn btn-sm {{ request('brand') === 'lamborghini' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img
+                                src="{{ asset('images/logos/lamborghini.png') }}"
                                 alt="logo"
                                 class="me-2"
                             >
                             <span>Lamborghini</span>
-                        </button>
+                        </a>
                     </div>
                     <!-- Category 7 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img
-                                src="../images/logos/maserati.png"
+                        <a href="{{ route('products.filter', ['brand' => 'maserati']) }}" class="btn btn-sm {{ request('brand') === 'maserati' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img
+                                src="{{ asset('images/logos/maserati.png') }}"
                                 alt="logo"
                                 class="me-2"
                             >
                             <span>Maserati</span>
-                        </button>
+                        </a>
                     </div>
                     <!-- Category 8 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <button type="button" class="btn btn-sm btn-secondary">
-                            <img
-                                src="../images/logos/tesla.png"
+                        <a href="{{ route('products.filter', ['brand' => 'tesla']) }}" class="btn btn-sm {{ request('brand') === 'tesla' ? 'btn-primary' : 'btn-secondary' }}">
+                        <img
+                                src="{{ asset('images/logos/tesla.png') }}"
                                 alt="logo"
                                 class="me-2"
                             >
                             <span>Tesla</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -162,7 +162,11 @@
             <!-- Sidebar -->
             <div class="container col-10 col-lg-3">
                 <h4 style="text-align: center">Sidebar</h4>
-                <form>
+                <form action="{{ route('products.filter') }}" method="GET">
+                    <input type="hidden" name="brand" value="{{ request('brand', 'all') }}">
+
+
+
                     <hr>
                     <!-- Search -->
                     <label for="searchBar" class="form-label">Search bar:</label>
@@ -172,6 +176,9 @@
                         aria-label="Text input with checkbox"
                         placeholder="search"
                         id="searchBar"
+                        value="{{ request('search') }}"
+                        onchange="this.form.submit()"
+                        name="search"
                     >
 
                     <hr>
@@ -179,8 +186,8 @@
                     <!-- price range -->
                     <label>Price:</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="from">
-                        <input type="text" class="form-control" placeholder="to">
+                        <input name="price_min" type="text" class="form-control" placeholder="from">
+                        <input name="price_max" type="text" class="form-control" placeholder="to">
                         <span class="input-group-text">€</span>
                     </div>
 
@@ -190,8 +197,8 @@
 
                     <label>Engine power in HP:</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="from">
-                        <input type="text" class="form-control" placeholder="to">
+                        <input name="power_min" type="text" class="form-control" placeholder="from">
+                        <input name="power_max" type="text" class="form-control" placeholder="to">
                         <span class="input-group-text">&#128014;</span>
                     </div>
 
@@ -199,7 +206,7 @@
 
                     <!-- transmision -->
 
-                    <label>Transmision:</label>
+                    {{--<label>Transmision:</label>
                     <div class="row">
                         <div class="form-check col-6">
                             <label class="form-check-label" for="Manual"> Manual </label>
@@ -216,41 +223,95 @@
                                 id="Automatic"
                             >
                         </div>
+                    </div>--}}
+
+                    <label>Transmission:</label>
+                    <div class="row">
+                        <div class="form-check col-6">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="transmission[]"
+                                value="Manual"
+                                id="Manual"
+                                {{ is_array(request('transmission')) && in_array('Manual', request('transmission')) ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="Manual">
+                                Manual
+                            </label>
+                        </div>
+
+                        <div class="form-check col-6">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="transmission[]"
+                                value="Automatic"
+                                id="Automatic"
+                                {{ is_array(request('transmission')) && in_array('Automatic', request('transmission')) ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="Automatic">
+                                Automatic
+                            </label>
+                        </div>
                     </div>
+
 
                     <hr>
 
                     <!-- fuel -->
-
                     <label>Fuel:</label>
                     <div class="row">
                         <div class="form-check col-6">
-                            <label class="form-check-label" for="Gasoline">
-                                Gasoline
-                            </label>
                             <input
                                 class="form-check-input"
                                 type="checkbox"
+                                name="fuel[]"
+                                value="Petrol"
                                 id="Gasoline"
+                                {{ is_array(request('fuel')) && in_array('Petrol', request('fuel')) ? 'checked' : '' }}
                             >
+                            <label class="form-check-label" for="Gasoline">
+                                Gasoline
+                            </label>
                         </div>
 
                         <div class="form-check col-6">
-                            <label class="form-check-label" for="Diesel"> Diesel </label>
-                            <input class="form-check-input" type="checkbox" id="Diesel">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="fuel[]"
+                                value="Diesel"
+                                id="Diesel"
+                                {{ is_array(request('fuel')) && in_array('Diesel', request('fuel')) ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="Diesel">
+                                Diesel
+                            </label>
                         </div>
+
                         <div class="form-check col-6">
-                            <label class="form-check-label" for="LPG"> LPG </label>
-                            <input class="form-check-input" type="checkbox" id="LPG">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="fuel[]"
+                                value="LPG"
+                                id="LPG"
+                                {{ is_array(request('fuel')) && in_array('LPG', request('fuel')) ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="LPG">
+                                LPG
+                            </label>
                         </div>
                     </div>
+
 
                     <hr>
 
                     <!-- submit -->
 
                     <div class="btn-group me-2 w-100">
-                        <button class="btn btn-primary btn-sm" type="button">
+                        <button type="submit" class="btn btn-primary btn-sm">
                             Search
                         </button>
                     </div>
@@ -261,7 +322,7 @@
             <!-- content -->
             <div class="container col-10 col-lg-8">
                 <!--Sorting-->
-                <div class="row gy-1">
+                {{--<div class="row gy-1">
                     <div class="col-12 col-sm-6 col-md-4">
                         <input
                             type="radio"
@@ -317,178 +378,139 @@
                         >Horse power Low to High</label
                         >
                     </div>
-                </div>
+                </div>--}}
+
+                <form action="{{ route('products.filter') }}" method="GET" id="sortForm">
+                    <!-- Keep all previous parameters for sorting -->
+                    @foreach(request()->except('sort') as $key => $value)
+                        <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                    @endforeach
+
+                    <div class="row gy-1">
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <input
+                                type="radio"
+                                class="btn-check"
+                                name="sort"
+                                value="price_low_high"
+                                id="lowToHigh"
+                                onchange="document.getElementById('sortForm').submit()"
+                                {{ (request('sort') == 'price_low_high' || !request()->has('sort')) ? 'checked' : '' }}
+                            >
+                            <label class="btn btn-sm btn-outline-primary w-100" for="lowToHigh">
+                                Price Low to High
+                            </label>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <input
+                                type="radio"
+                                class="btn-check"
+                                name="sort"
+                                value="price_high_low"
+                                id="highToLow"
+                                onchange="document.getElementById('sortForm').submit()"
+                                {{ request('sort') == 'price_high_low' ? 'checked' : '' }}
+                            >
+                            <label class="btn btn-sm btn-outline-primary w-100" for="highToLow">
+                                Price High to Low
+                            </label>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <input
+                                type="radio"
+                                class="btn-check"
+                                name="sort"
+                                value="hp_high_low"
+                                id="HpHighToLow"
+                                onchange="document.getElementById('sortForm').submit()"
+                                {{ request('sort') == 'hp_high_low' ? 'checked' : '' }}
+                            >
+                            <label class="btn btn-sm btn-outline-primary w-100" for="HpHighToLow">
+                                Horse power High to Low
+                            </label>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <input
+                                type="radio"
+                                class="btn-check"
+                                name="sort"
+                                value="hp_low_high"
+                                id="HpLowToHigh"
+                                onchange="document.getElementById('sortForm').submit()"
+                                {{ request('sort') == 'hp_low_high' ? 'checked' : '' }}
+                            >
+                            <label class="btn btn-sm btn-outline-primary w-100" for="HpLowToHigh">
+                                Horse power Low to High
+                            </label>
+                        </div>
+                    </div>
+                </form>
 
                 <hr>
                 <!--Cars-->
                 <div class="row">
-                    <!-- car 1 -->
-                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-sm-5 col-md-4 col-lg-12">
-                                    <img
-                                        src="../images/cars/ferrari_1.jpg"
-                                        class="object-fit-contain"
-                                        alt="Ferrari"
-                                    >
-                                </div>
-                                <div class="col-sm-7 col-md-8 col-lg-12">
-                                    <div class="card-body">
-                                        <h1 class="card-title">Ferrari F8 Tributo</h1>
-                                        <p class="card-text">Price: 50,000 €</p>
-                                        <div class="row w-100">
-                                            <div
-                                                class="btn-group me-2"
-                                                role="group"
-                                                aria-label="Second group"
+                    @foreach($products as $product)
+                        <div class="col-12 col-lg-6 col-xxl-4 mb-3">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-sm-5 col-md-4 col-lg-12">
+                                        @if($product->mainImage)
+                                            <img
+                                                src="{{ asset($product->mainImage->image_path) }}"
+                                                class="object-fit-contain"
+                                                alt="{{ $product->title }}"
                                             >
-                                                <a
-                                                    href="product.html"
-                                                    class="btn btn-primary btn-sm"
-                                                >View</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- car 2 -->
-                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-sm-5 col-md-4 col-lg-12">
-                                    <img
-                                        src="../images/cars/ferrari_2.jpg"
-                                        class="object-fit-contain"
-                                        alt="Ferrari"
-                                    >
-                                </div>
-                                <div class="col-sm-7 col-md-8 col-lg-12">
-                                    <div class="card-body">
-                                        <h1 class="card-title">Ferrari Torronto</h1>
-                                        <p class="card-text">Price: 60,000 €</p>
-                                        <div class="row w-100">
-                                            <div
-                                                class="btn-group me-2"
-                                                role="group"
-                                                aria-label="Second group"
-                                            >
-                                                <a
-                                                    href="product.html"
-                                                    class="btn btn-primary btn-sm"
-                                                >View</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                        @else
+                                            <img src="{{ asset('images/default.png') }}" class="card-img-top" alt="No image">
+                                        @endif
 
-                    <!-- car 3 -->
-                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-sm-5 col-md-4 col-lg-12">
-                                    <img
-                                        src="../images/cars/ferrari_3.jpg"
-                                        class="object-fit-contain"
-                                        alt="Ferrari"
-                                    >
-                                </div>
-                                <div class="col-sm-7 col-md-8 col-lg-12">
-                                    <div class="card-body">
-                                        <h1 class="card-title">Ferrari Ohio</h1>
-                                        <p class="card-text">Price: 70,000 €</p>
-                                        <div class="row w-100">
-                                            <div
-                                                class="btn-group me-2"
-                                                role="group"
-                                                aria-label="Second group"
-                                            >
-                                                <a
-                                                    href="product.html"
-                                                    class="btn btn-primary btn-sm"
-                                                >View</a
+                                    </div>
+                                    <div class="col-sm-7 col-md-8 col-lg-12">
+                                        <div class="card-body">
+                                            <h1 class="card-title">{{ $product->title }}</h1>
+                                            <p class="card-text">Price: {{ number_format($product->price) }} €</p>
+                                            <div class="row w-100">
+                                                <div
+                                                    class="btn-group me-2"
+                                                    role="group"
+                                                    aria-label="Second group"
                                                 >
+                                                    <a
+                                                        href="{{ route('products.show', ['id' => $product->id]) }}"
+                                                        class="btn btn-primary btn-sm"
+                                                    >
+                                                        View
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <!-- car 4 -->
-                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-sm-5 col-md-4 col-lg-12">
-                                    <img
-                                        src="../images/cars/ferrari_4.jpg"
-                                        class="object-fit-contain"
-                                        alt="Ferrari"
-                                    >
-                                </div>
-                                <div class="col-sm-7 col-md-8 col-lg-12">
-                                    <div class="card-body">
-                                        <h1 class="card-title">Ferrari Sport</h1>
-                                        <p class="card-text">Price: 80,000 €</p>
-                                        <div class="row w-100">
-                                            <div
-                                                class="btn-group me-2"
-                                                role="group"
-                                                aria-label="Second group"
-                                            >
-                                                <a
-                                                    href="product.html"
-                                                    class="btn btn-primary btn-sm"
-                                                >View</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
+
+                    {{--@foreach($products as $product)
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->title }}</h5>
+                                    <p class="card-text">
+                                        <strong>Brand:</strong> {{ $product->brand->name ?? 'Unknown' }}<br>
+                                        <strong>Price:</strong> ${{ number_format($product->price) }}<br>
+                                        <strong>Engine Power:</strong> {{ $product->engine_power }} HP<br>
+                                        <strong>Fuel:</strong> {{ $product->fuel->type ?? 'Unknown' }}<br>
+                                        <strong>Transmission:</strong> {{ $product->transmission->type ?? 'Unknown' }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- car 5 -->
-                    <div class="col-12 col-lg-6 col-xxl-4 mb-3">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-sm-5 col-md-4 col-lg-12">
-                                    <img
-                                        src="../images/cars/ferrari_5.jpg"
-                                        class="object-fit-contain"
-                                        alt="Ferrari"
-                                    >
-                                </div>
-                                <div class="col-sm-7 col-md-8 col-lg-12">
-                                    <div class="card-body">
-                                        <h1 class="card-title">Ferrari Jablko</h1>
-                                        <p class="card-text">Price: 90,000 €</p>
-                                        <div class="row w-100">
-                                            <div
-                                                class="btn-group me-2"
-                                                role="group"
-                                                aria-label="Second group"
-                                            >
-                                                <a
-                                                    href="product.html"
-                                                    class="btn btn-primary btn-sm"
-                                                >View</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach--}}
+
                 </div>
             </div>
 

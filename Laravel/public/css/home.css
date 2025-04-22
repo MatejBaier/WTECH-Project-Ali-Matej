@@ -29,7 +29,7 @@
   height: auto;
 }
 
-.categories button {
+.categories a {
   display: flex;
   flex-direction: row;
   align-items: center;

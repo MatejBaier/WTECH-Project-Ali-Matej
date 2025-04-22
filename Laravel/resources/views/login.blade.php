@@ -46,11 +46,6 @@
     </nav>
 </header>
 <main>
-    @auth()
-    <p>Si prihlaseny</p>
-    @else
-    <p>Nie si prihlaseny</p>
-    @endauth
     <div class="container-fluid">
         <div class="row">
             <div class="container col-8 offset-2 mb-4 gy-4">
