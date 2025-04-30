@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShoppingCartItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,14 @@ class UserController extends Controller
         if(auth()->attempt(['email' => $userInput['email'], 'password' => $userInput['password']]))
         {
             $request->session()->regenerate();
+
+            $this->mergeCarts(auth()->user());
+
             return redirect('home');
         }
 
-        return redirect('login');
+        return back()->with('error', 'The provided login info is incorrect.');
+
     }
 
     public function log_out()
@@ -34,7 +39,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $userInput = $request->validate([
-            'email' => ['required', 'email', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
             'full_name' => ['required', 'string', 'min:3', 'max:255'],
             'phone_number' => ['required', 'string'],
@@ -49,6 +54,40 @@ class UserController extends Controller
         $user = User::create($userInput);
         auth()->login($user);
 
+        $this->mergeCarts($user);
+
         return redirect('/home');
     }
+
+    private function mergeCarts(User $user)
+    {
+        $sessionCart = session('cart', []);
+
+        foreach ($sessionCart as $productId => $item)
+        {
+            #$quantity = is_array($item) ? $item['quantity'] : $item;
+            $quantity = $item['quantity'];
+
+            $cartItem = ShoppingCartItem::where('user_id', $user->id)->where('product_id', $productId)->first();
+
+            if ($cartItem)
+            {
+                $cartItem->quantity += $quantity;
+                $cartItem->save();
+            }
+            else
+            {
+                ShoppingCartItem::create([
+                    'user_id' => $user->id,
+                    'product_id' => $productId,
+                    'quantity' => $quantity
+                ]);
+            }
+        }
+
+        // Delete session cart
+        session()->forget('cart');
+    }
+
+
 }
