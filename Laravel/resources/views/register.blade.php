@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <ul class="navbar-nav flex-row gap-1">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ url()->previous() }}">
                         <i class="bi bi-arrow-left"></i>
                     </a>
                 </li>
@@ -39,7 +39,7 @@
 
             <div class="d-flex align-items-center">
                 <a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
-                    Cart <span class="badge text-bg-secondary">3</span>
+                    Cart
                 </a>
             </div>
         </div>
@@ -65,13 +65,15 @@
                             name="email"
                             type="email"
                             id="email"
-                            class="form-control"
+                            class="form-control @error('email') is-invalid @enderror"
                             placeholder="email address"
                             required
                         >
+                        @error('email')
                         <div class="invalid-feedback">
-                            Please choose a valid email address.
+                            {{ $message }}
                         </div>
+                        @enderror
                     </div>
 
                     <!-- password -->
@@ -81,11 +83,15 @@
                             name="password"
                             type="password"
                             id="password"
-                            class="form-control"
+                            class="form-control @error('password') is-invalid @enderror"
                             placeholder="password"
                             required
                         >
-                        <div class="invalid-feedback">Please choose a password.</div>
+                        @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <!-- Confirm Password -->
@@ -95,11 +101,15 @@
                             name="password_confirmation"
                             type="password"
                             id="passwordConfirmation"
-                            class="form-control"
+                            class="form-control @error('password_confirmation') is-invalid @enderror"
                             placeholder="confirm password"
                             required
                         >
-                        <div class="invalid-feedback">Please confirm your password.</div>
+                        @error('password_confirmation')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <hr>
@@ -111,11 +121,15 @@
                             name="full_name"
                             type="text"
                             id="fullName"
-                            class="form-control"
+                            class="form-control @error('full_name') is-invalid @enderror"
                             placeholder="full name"
                             required
                         >
-                        <div class="invalid-feedback">Please choose full name.</div>
+                        @error('full_name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <!-- Phone number-->
@@ -127,13 +141,15 @@
                             name="phone_number"
                             type="tel"
                             id="phoneNumber"
-                            class="form-control"
+                            class="form-control @error('phone_number') is-invalid @enderror"
                             placeholder="phone number"
                             required
                         >
+                        @error('phone_number')
                         <div class="invalid-feedback">
-                            Please choose a phone number.
+                            {{ $message }}
                         </div>
+                        @enderror
                     </div>
                     <hr>
                     <!-- State -->
@@ -143,11 +159,15 @@
                             name="state"
                             type="text"
                             id="state"
-                            class="form-control"
+                            class="form-control @error('state') is-invalid @enderror"
                             placeholder="slovakia"
                             required
                         >
-                        <div class="invalid-feedback">Please choose a state.</div>
+                        @error('state')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <!-- City -->
                     <div class="row input-group mb-2">
@@ -156,11 +176,15 @@
                             name="city"
                             type="text"
                             id="city"
-                            class="form-control"
+                            class="form-control @error('city') is-invalid @enderror"
                             placeholder="city"
                             required
                         >
-                        <div class="invalid-feedback">Please choose a city.</div>
+                        @error('city')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <!-- Address -->
@@ -170,12 +194,16 @@
                             name="address"
                             type="text"
                             id="address"
-                            class="form-control"
+                            class="form-control @error('address') is-invalid @enderror"
                             placeholder="address"
                             required
                         >
 
-                        <div class="invalid-feedback">Please choose a address.</div>
+                        @error('address')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <!-- Postal code -->
                     <div class="row input-group mb-2">
@@ -186,11 +214,16 @@
                             name="postal_code"
                             type="text"
                             id="postalCode"
-                            class="form-control"
+                            class="form-control @error('postal_code') is-invalid @enderror"
+
                             placeholder="postal code"
                             required
                         >
-                        <div class="invalid-feedback">Please choose a postal code.</div>
+                        @error('postal_code')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <hr>
                     <button

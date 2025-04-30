@@ -27,14 +27,14 @@
         <div class="container-fluid">
             <ul class="navbar-nav flex-row gap-1">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ url()->previous() }}">
                         <i class="bi bi-arrow-left"></i>
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{--<li class="nav-item">
                     <a class="nav-link" href="{{ url('/home') }}">Admin</a>
-                </li>
+                </li>--}}
             </ul>
             <div class="d-flex align-items-center gap-1">
                     @auth()
@@ -56,10 +56,19 @@
                         </div>
                 @endauth
                 <a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
-                    Cart <span class="badge text-bg-secondary">3</span>
+                    Cart
                 </a>
             </div>
         </div>
+
+
+                 <form action="{{ route('products.global_search') }}" method="GET" class="d-flex flex-column flex-sm-row w-100">
+                    <input type="text" name="search" class="form-control" placeholder="Search for all products" value="{{ request('search') }}" aria-label="Search for all products">
+                    <button type="submit" class="btn btn-primary mt-2 mt-sm-0 ms-sm-2">Search</button>
+                 </form>
+
+
+
     </nav>
 </header>
 
@@ -76,7 +85,19 @@
                         </a>
                     </div>
 
-                    <!-- Category 1 -->
+                    @foreach ($brands as $brand)
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <a
+                            href="{{ route('products.filter', ['brand' => strtolower($brand->name)]) }}"
+                            class="btn btn-sm {{ request('brand') === strtolower($brand->name) ? 'btn-primary' : 'btn-secondary' }}">
+                            <img src="{{ asset('images/logos/' . strtolower($brand->name) . '.png') }}" alt="{{ $brand->name }}" class="me-2">
+                            <span>{{ ucfirst($brand->name) }}</span>
+                        </a>
+                    </div>
+                    @endforeach
+
+
+                    {{--<!-- Category 1 -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
                         <a href="{{ route('products.filter', ['brand' => 'audi']) }}" class="btn btn-sm {{ request('brand') === 'audi' ? 'btn-primary' : 'btn-secondary' }}">
                         <img src="{{ asset('images/logos/audi.png') }}" alt="logo" class="me-2">
@@ -155,22 +176,35 @@
                             >
                             <span>Tesla</span>
                         </a>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
 
             <!-- Sidebar -->
             <div class="container col-10 col-lg-3">
-                <h4 style="text-align: center">Sidebar</h4>
+                <h4 style="text-align: center">Filters</h4>
                 <form action="{{ route('products.filter') }}" method="GET">
                     <input type="hidden" name="brand" value="{{ request('brand', 'all') }}">
 
 
 
                     <hr>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Incorrect fields:</strong>
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+
                     <!-- Search -->
-                    <label for="searchBar" class="form-label">Search bar:</label>
+                    <label hidden for="searchBar" class="form-label">Search bar:</label>
                     <input
+                        hidden
                         type="text"
                         class="form-control"
                         aria-label="Text input with checkbox"
@@ -181,13 +215,13 @@
                         name="search"
                     >
 
-                    <hr>
+                    <hr hidden>
 
                     <!-- price range -->
                     <label>Price:</label>
                     <div class="input-group mb-3">
-                        <input name="price_min" type="text" class="form-control" placeholder="from">
-                        <input name="price_max" type="text" class="form-control" placeholder="to">
+                        <input name="price_min" type="text" class="form-control" placeholder="from" value="{{ request('price_min') }}">
+                        <input name="price_max" type="text" class="form-control" placeholder="to"value="{{ request('price_max') }}">
                         <span class="input-group-text">€</span>
                     </div>
 
@@ -197,8 +231,8 @@
 
                     <label>Engine power in HP:</label>
                     <div class="input-group mb-3">
-                        <input name="power_min" type="text" class="form-control" placeholder="from">
-                        <input name="power_max" type="text" class="form-control" placeholder="to">
+                        <input name="power_min" type="text" class="form-control" placeholder="from" value="{{ request('power_min') }}">
+                        <input name="power_max" type="text" class="form-control" placeholder="to" value="{{ request('power_max') }}">
                         <span class="input-group-text">&#128014;</span>
                     </div>
 
@@ -227,7 +261,25 @@
 
                     <label>Transmission:</label>
                     <div class="row">
+
+                        @foreach ($transmissions as $transmission)
                         <div class="form-check col-6">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="transmission[]"
+                                value="{{ $transmission->type }}"
+                                id="trans_{{ $transmission->type }}"
+                                {{ is_array(request('transmission')) && in_array($transmission->type, request('transmission')) ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="trans_{{ $transmission->type }}">
+                                {{ ucfirst($transmission->type) }}
+                            </label>
+                        </div>
+                        @endforeach
+
+
+                        {{--<div class="form-check col-6">
                             <input
                                 class="form-check-input"
                                 type="checkbox"
@@ -253,7 +305,7 @@
                             <label class="form-check-label" for="Automatic">
                                 Automatic
                             </label>
-                        </div>
+                        </div>--}}
                     </div>
 
 
@@ -262,7 +314,25 @@
                     <!-- fuel -->
                     <label>Fuel:</label>
                     <div class="row">
+
+                        @foreach($fuels as $fuel)
                         <div class="form-check col-6">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="fuel[]"
+                                value="{{ $fuel->type }}"
+                                id="fuel_{{ $fuel->id }}"
+                                {{ is_array(request('fuel')) && in_array($fuel->type, request('fuel')) ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="Diesel">
+                                {{ $fuel->type }}
+                            </label>
+                        </div>
+                        @endforeach
+
+
+                        {{--<div class="form-check col-6">
                             <input
                                 class="form-check-input"
                                 type="checkbox"
@@ -303,6 +373,20 @@
                                 LPG
                             </label>
                         </div>
+
+                        <div class="form-check col-6">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="fuel[]"
+                                value="LPG"
+                                id="LPG"
+                                {{ is_array(request('fuel')) && in_array('LPG', request('fuel')) ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="LPG">
+                                LPG
+                            </label>
+                        </div>--}}
                     </div>
 
 
@@ -383,7 +467,13 @@
                 <form action="{{ route('products.filter') }}" method="GET" id="sortForm">
                     <!-- Keep all previous parameters for sorting -->
                     @foreach(request()->except('sort') as $key => $value)
-                        <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                        @if(is_array($value))
+                            @foreach($value as $v)
+                                <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+                            @endforeach
+                        @else
+                            <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                        @endif
                     @endforeach
 
                     <div class="row gy-1">
@@ -514,7 +604,7 @@
                 </div>
             </div>
 
-            <div class="btn-toolbar col-12" role="toolbar">
+            {{--<div class="btn-toolbar col-12" role="toolbar">
                 <div class="btn-group me-2" role="group" aria-label="Second group">
                     <button type="button" class="btn btn-secondary">&lt;</button>
                     <button type="button" class="btn btn-secondary">1</button>
@@ -523,7 +613,71 @@
                     <button type="button" class="btn btn-secondary">4</button>
                     <button type="button" class="btn btn-secondary">&gt;</button>
                 </div>
-            </div>
+            </div>--}}
+
+            @if ($products->hasPages())
+                <div class="mt-4">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {{-- Previous page link --}}
+                            @if ($products->onFirstPage())
+                                <li class="page-item disabled">
+                                    <span class="page-link">&laquo;</span>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $products->appends(request()->query())->previousPageUrl() }}" rel="prev">&laquo;</a>
+                                </li>
+                            @endif
+
+                            {{-- Pages --}}
+                            @php
+                                # Calculate range of pages to be shown
+                                $start = max($products->currentPage() - 2, 1);
+                                $end = min($products->currentPage() + 2, $products->lastPage());
+                            @endphp
+
+                            @for ($i = $start; $i <= $end; $i++)
+                                @if ($i == $products->currentPage())
+                                    <li class="page-item active" aria-current="page">
+                                        <span class="page-link">{{ $i }}</span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $products->appends(request()->query())->url($i) }}">{{ $i }}</a>
+                                    </li>
+                                @endif
+                            @endfor
+
+                            {{-- Next page link --}}
+                            @if ($products->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $products->appends(request()->query())->nextPageUrl() }}" rel="next">&raquo;</a>
+                                </li>
+                            @else
+                                <li class="page-item disabled">
+                                    <span class="page-link">&raquo;</span>
+                                </li>
+                            @endif
+                        </ul>
+                    </nav>
+                </div>
+            @else
+                <div class="mt-4">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">1</span>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            @endif
+
+
+
+
+
         </div>
     </div>
 </main>

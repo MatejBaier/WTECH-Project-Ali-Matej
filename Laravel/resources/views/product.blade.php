@@ -31,16 +31,16 @@
         <div class="container-fluid">
             <ul class="navbar-nav flex-row gap-1">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ url()->previous() }}">
                         <i class="bi bi-arrow-left"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html">Home</a>
+                    <a class="nav-link" href="{{ url('/home') }}">Home</a>
                 </li>
-                <li class="nav-item">
+                {{--<li class="nav-item">
                     <a class="nav-link" href="productAdmin.html">Admin</a>
-                </li>
+                </li>--}}
             </ul>
             <div class="d-flex align-items-center gap-1">
                 <div
@@ -48,19 +48,11 @@
                     role="group"
                     aria-label="Basic outlined example"
                 >
-                    <a
-                        href="login.html"
-                        class="btn btn-sm btn-outline-primary"
-                    >Login</a
-                    >
-                    <a
-                        href="register.html"
-                        class="btn btn-sm btn-outline-primary"
-                    >Register</a
-                    >
+                    <a href="{{ url('/login') }}" class="btn btn-sm btn-outline-primary">Login</a>
+                    <a href="{{ url('/register') }}" class="btn btn-sm btn-outline-primary">Register</a>
                 </div>
-                <a class="btn btn-sm btn-primary" href="cart.html">
-                    Cart <span class="badge text-bg-secondary">3</span>
+                <a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
+                    Cart
                 </a>
             </div>
         </div>
@@ -87,33 +79,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-                        <!-- image 2-->
-                        <div class="gy-1">
-                            <div
-                                class="card"
-                                onclick="openModal('../images/cars/ferrari_tributo_2.jpg')"
-                            >
-                                <img
-                                    src="../images/cars/ferrari_tributo_2.jpg"
-                                    class="card-img-top"
-                                    alt="Image 2"
-                                >
-                            </div>
-                        </div>
-                        <!-- image 3-->
-                        <div class="gy-1">
-                            <div
-                                class="card"
-                                onclick="openModal('../images/cars/ferrari_tributo_3.jpg')"
-                            >
-                                <img
-                                    src="../images/cars/ferrari_tributo_3.jpg"
-                                    class="card-img-top"
-                                    alt="Image 3"
-                                >
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -149,20 +114,25 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="row" style="justify-content: center">
-                        <div class="input-group mb-3" style="max-width: 24rem">
-                            <span class="input-group-text">Quantity</span>
-                            <input
-                                type="number"
-                                class="form-control text-center"
-                                value="1"
-                            >
+                    <form action="{{ route('shopping_cart.add', $product->id) }}" method="POST">
+                        @csrf
+                        <div class="row" style="justify-content: center">
+                            <div class="input-group mb-3" style="max-width: 24rem">
+                                    <span class="input-group-text">Quantity</span>
+                                    <input
+                                        type="number"
+                                        class="form-control text-center"
+                                        value="1"
+                                        name="quantity"
+                                        min="1"
+                                    >
 
-                            <button class="btn btn-success btn-sm" type="button">
-                                Add to basket
-                            </button>
+                                    <button class="btn btn-success btn-sm" type="submit">
+                                        Add to basket
+                                    </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

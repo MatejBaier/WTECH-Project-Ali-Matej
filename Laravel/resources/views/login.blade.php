@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <ul class="navbar-nav flex-row gap-1">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ url()->previous() }}">
                         <i class="bi bi-arrow-left"></i>
                     </a>
                 </li>
@@ -39,7 +39,7 @@
 
             <div class="d-flex align-items-center">
                 <a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
-                    Cart <span class="badge text-bg-secondary">3</span>
+                    Cart
                 </a>
             </div>
         </div>
@@ -54,6 +54,12 @@
                     @csrf
 
                     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <!-- email -->
                     <div class="row input-group mb-2">
@@ -100,7 +106,7 @@
         </div>
     </div>
 </main>
-{{--<script>
+<script>
     (() => {
         "use strict";
         const forms = document.querySelectorAll(".needs-validation");
@@ -120,6 +126,6 @@
             );
         });
     })();
-</script>--}}
+</script>
 </body>
 </html>
