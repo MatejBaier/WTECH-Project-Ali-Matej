@@ -82,60 +82,62 @@
     </nav>
 </header>
 <main>
-    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="form-container">
-    @csrf
-        <div class="container-fluid">
-            <div class="row">
-                {{--<form class="form-container" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf--}}
 
-                {{--<div class="col-10 col-md-6 offset-1 offset-md-0">
-                    <div class="container overflow-auto" style="max-height: 42rem">
-                        <div class="row">
-                            <!-- image 1-->
+    <div class="container-fluid">
+        <div class="row">
+            {{--<form class="form-container" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf--}}
+
+            <div class="col-10 col-md-6 offset-1 offset-md-0">
+                <div class="container overflow-auto" style="max-height: 42rem">
+                    <div class="row">
+                        <!-- image 1-->
 
 
-                            @if(isset($product) && $product->images)
-                                @foreach($product->images as $image)
-                                    <div class="gy-1">
-                                        <div
-                                            class="card"
-                                            --}}{{--onclick="openModal('../images/cars/BMW.jpg')"--}}{{--
+                        @if(isset($product) && $product->images)
+                            @foreach($product->images as $image)
+                                <div class="gy-1">
+                                    <div
+                                        class="card"
+                                        {{--onclick="openModal('../images/cars/BMW.jpg')"--}}
+                                    >
+                                        <img
+                                            src="{{ asset($image->image_path) }}"
+                                            onclick="openModal('{{ asset($image->image_path) }}')"
+                                            alt="Product image"
+                                            class="card-img-top"
                                         >
-                                            <img
-                                                src="{{ asset($image->image_path) }}"
-                                                onclick="openModal('{{ asset($image->image_path) }}')"
-                                                alt="Product image"
-                                                class="card-img-top"
-                                            >
-                                            <div class="text-muted text-center small">ID: {{ $image->id }}</div>
-                                            <div class="text-muted small">
-                                                Route: {{ route('products.images.destroy', $image->id) }}
-                                            </div>
+                                        <div class="text-muted text-center small">ID: {{ $image->id }}</div>
+                                        <div class="text-muted small">
+                                            Route: {{ route('products.images.destroy', $image->id) }}
+                                        </div>
 
 
 
-                                            <div class="card-footer text-center p-1">
-                                                <form action="{{ route('products.images.destroy', $image->id) }}" method="POST" onsubmit="return confirm('Delete this image?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-sm btn-danger w-100">Remove</button>
-                                                </form>
-
-                                            </div>
+                                        <div class="card-footer text-center p-1">
+                                            <form action="{{ route('products.images.destroy', $image->id) }}" method="POST" onsubmit="return confirm('Delete this image?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-sm btn-danger w-100">Remove</button>
+                                            </form>
 
                                         </div>
+
                                     </div>
-                                @endforeach
-                            @endif
+                                </div>
+                            @endforeach
+                        @endif
 
 
-                        </div>
                     </div>
-                </div>--}}
+                </div>
+            </div>
 
 
-                <div class="col-10 offset-1 col-md-6 offset-md-0">
+            <div class="col-10 offset-1 col-md-6 offset-md-0">
+                <form class="form-container" action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="input-group mb-3">
                         <span class="input-group-text">Name</span>
                         <input
@@ -144,7 +146,7 @@
                             placeholder="BMW g2"
                             id="name"
                             name="title"
-                            {{--value="{{ old('title', $product->title ?? '') }}"--}}
+                            value="{{ old('title', $product->title ?? '') }}"
                             required
                         >
                     </div>
@@ -158,7 +160,7 @@
                             class="form-control"
                             name="price"
                             placeholder="75000"
-                            {{--value="{{ old('price', $product->price ?? '') }}"--}}
+                            value="{{ old('price', $product->price ?? '') }}"
                             required
                         >
                         <span class="input-group-text">€</span>
@@ -172,7 +174,7 @@
                             class="form-control"
                             name="engine_power"
                             placeholder="550"
-                            {{--value="{{ old('engine_power', $product->engine_power ?? '') }}"--}}
+                            value="{{ old('engine_power', $product->engine_power ?? '') }}"
                             required
                         >
                         <span class="input-group-text">&#128014;</span>
@@ -192,8 +194,7 @@
                                         name="transmission_id"
                                         id="transmission_{{ $transmission->id }}"
                                         value="{{ $transmission->id }}"
-                                        {{--{{ (old('transmission_id', $product->transmission_id ?? '') == $transmission->id) ? 'checked' : '' }}--}}
-                                        required
+                                        {{ (old('transmission_id', $product->transmission_id ?? '') == $transmission->id) ? 'checked' : '' }}
                                     >
                                     <label class="form-check-label" for="transmission_{{ $transmission->id }}"
                                     >{{ $transmission->type }}</label
@@ -210,22 +211,21 @@
                     <div class="row">
 
                         @foreach($fuels as $fuel)
-                            <div class="col-6 col-md-4 col-xl-3">
-                                <div class="form-check">
-                                    <input
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="fuel_id"
-                                        id="fuel_{{ $fuel->id }}"
-                                        value="{{ $fuel->id }}"
-                                        {{--{{ (old('fuel_id', $product->fuel_id ?? '') == $fuel->id) ? 'checked' : '' }}--}}
-                                        required
-                                    >
-                                    <label class="form-check-label" for="fuel_{{ $fuel->id }}"
-                                    >{{ $fuel->type }}</label
-                                    >
-                                </div>
+                        <div class="col-6 col-md-4 col-xl-3">
+                            <div class="form-check">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="fuel_id"
+                                    id="fuel_{{ $fuel->id }}"
+                                    value="{{ $fuel->id }}"
+                                    {{ (old('fuel_id', $product->fuel_id ?? '') == $fuel->id) ? 'checked' : '' }}
+                                >
+                                <label class="form-check-label" for="fuel_{{ $fuel->id }}"
+                                >{{ $fuel->type }}</label
+                                >
                             </div>
+                        </div>
                         @endforeach
 
 
@@ -238,57 +238,68 @@
 
 
                         @foreach($brands as $brand)
-                            <div class="col-6 col-md-4 col-xl-3">
-                                <div class="form-check">
-                                    <input
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="brand_id"
-                                        id="brand_{{ $brand->id }}"
-                                        value="{{ $brand->id }}"
-                                        {{--{{ (old('brand_id', $product->brand_id ?? '') == $brand->id) ? 'checked' : '' }}--}}
-                                        required
+                        <div class="col-6 col-md-4 col-xl-3">
+                            <div class="form-check">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="brand_id"
+                                    id="brand_{{ $brand->id }}"
+                                    value="{{ $brand->id }}"
+                                    {{ (old('brand_id', $product->brand_id ?? '') == $brand->id) ? 'checked' : '' }}
 
-                                    >
-                                    <label class="form-check-label" for="brand_{{ $brand->id }}"
-                                    >{{ ucfirst($brand->name) }}</label
-                                    >
-                                </div>
+                                >
+                                <label class="form-check-label" for="brand_{{ $brand->id }}"
+                                >{{ ucfirst($brand->name) }}</label
+                                >
                             </div>
+                        </div>
                         @endforeach
 
 
                     </div>
 
 
-                    <hr>
+                        <hr>
 
-                    {{--@if(isset($product))--}}
-                    <div class="btn-group w-100" role="group">
-
-
+                        {{--@if(isset($product))--}}
+                        <div class="btn-group w-100" role="group">
 
 
-                    </div>
-                    <div class="btn-group w-100" role="group">
-                        <button type="submit" class="btn btn-success btn-sm">
-                            Create product
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                Update
+                            </button>
+
+
+                        </div>
+                        {{--@else
+                            <div class="btn-group w-100" role="group">
+                                <button type="submit" class="btn btn-success btn-sm">
+                                    Create product
+                                </button>
+                            </div>
+                        @endif--}}
+                    </form>
+
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Delete
                         </button>
-                    </div>
-                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" onclick="alert('Please create the product first, then you can upload images')">
+                    </form>
+
+                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#addImageModal">
                         Add picture
                     </button>
-
-
-
                 </div>
 
             </div>
 
 
-            {{--</form>--}}
+        {{--</form>--}}
         </div>
-    </form>
+    </div>
 
     <div
         class="modal fade"
@@ -326,7 +337,7 @@
     </div>
 
     <!-- Upload image modal -->
-{{--    <div class="modal fade" id="addImageModal" tabindex="-1" aria-labelledby="addImageModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addImageModal" tabindex="-1" aria-labelledby="addImageModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form
                 action="{{ route('products.images.store', $product->id) }}"
@@ -339,7 +350,7 @@
                 <button type="submit">Upload</button>
             </form>
         </div>
-    </div>--}}
+    </div>
 
 </main>
 

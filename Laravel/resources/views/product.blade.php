@@ -35,29 +35,53 @@
                         <i class="bi bi-arrow-left"></i>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/home') }}">Home</a>
                 </li>
-                {{--<li class="nav-item">
-                    <a class="nav-link" href="productAdmin.html">Admin</a>
-                </li>--}}
             </ul>
             <div class="d-flex align-items-center gap-1">
-                <div
-                    class="btn-group"
-                    role="group"
-                    aria-label="Basic outlined example"
-                >
-                    <a href="{{ url('/login') }}" class="btn btn-sm btn-outline-primary">Login</a>
-                    <a href="{{ url('/register') }}" class="btn btn-sm btn-outline-primary">Register</a>
-                </div>
+                @auth()
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="badge rounded-pill fs-6 text-white bg-primary">{{ auth()->user()->full_name }}</span>
+
+                        @auth
+                            @if(auth()->user()->is_admin)
+                                <span class="badge rounded-pill fs-6 text-white bg-primary">ADMIN</span>
+                            @endif
+                        @endauth
+
+                        <form action="{{ url('/perform_log_out') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-danger">Logout</button>
+                        </form>
+                    </div>
+                @else
+                    <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic outlined example"
+                    >
+                        <a href="{{ url('/login') }}" class="btn btn-sm btn-outline-primary">Login</a>
+                        <a href="{{ url('/register') }}" class="btn btn-sm btn-outline-primary">Register</a>
+                    </div>
+                @endauth
                 <a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
                     Cart
                 </a>
             </div>
         </div>
+
+
+        <form action="{{ route('products.global_search') }}" method="GET" class="d-flex flex-column flex-sm-row w-100">
+            <input type="text" name="search" class="form-control" placeholder="Search for all products" value="{{ request('search') }}" aria-label="Search for all products">
+            <button type="submit" class="btn btn-primary mt-2 mt-sm-0 ms-sm-2">Search</button>
+        </form>
+
     </nav>
 </header>
+
+
 <main>
     <div class="container-fluid">
         <div class="row">

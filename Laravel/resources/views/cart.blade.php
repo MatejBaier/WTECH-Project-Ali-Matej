@@ -17,20 +17,21 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
     >
 
-    <link rel="stylesheet" href="../css/generic.css">
-    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="{{ asset('css/generic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
 
 <body>
 <header>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <ul class="navbar-nav flex-row gap-4">
+            <ul class="navbar-nav flex-row gap-1">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url()->previous() }}">
                         <i class="bi bi-arrow-left"></i>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/home') }}">Home</a>
                 </li>
@@ -39,6 +40,13 @@
                 @auth()
                     <div class="d-flex align-items-center gap-1">
                         <span class="badge rounded-pill fs-6 text-white bg-primary">{{ auth()->user()->full_name }}</span>
+
+                        @auth
+                            @if(auth()->user()->is_admin)
+                                <span class="badge rounded-pill fs-6 text-white bg-primary">ADMIN</span>
+                            @endif
+                        @endauth
+
                         <form action="{{ url('/perform_log_out') }}" method="POST" style="display: inline;">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-danger">Logout</button>
@@ -54,8 +62,18 @@
                         <a href="{{ url('/register') }}" class="btn btn-sm btn-outline-primary">Register</a>
                     </div>
                 @endauth
+                {{--<a class="btn btn-sm btn-primary" href="{{ url('/cart') }}">
+                    Cart
+                </a>--}}
             </div>
         </div>
+
+
+        <form action="{{ route('products.global_search') }}" method="GET" class="d-flex flex-column flex-sm-row w-100">
+            <input type="text" name="search" class="form-control" placeholder="Search for all products" value="{{ request('search') }}" aria-label="Search for all products">
+            <button type="submit" class="btn btn-primary mt-2 mt-sm-0 ms-sm-2">Search</button>
+        </form>
+
     </nav>
 </header>
 
@@ -312,110 +330,6 @@
                             </div>
                         </div>
                     @endforeach
-
-
-
-                    <!-- car 1 -->
-                    {{--<div class="card">
-                        <div class="row">
-                            <div class="col-12 col-xl-4">
-                                <img
-                                    src="../images/cars/ferrari_1.jpg"
-                                    class="object-fit-contain"
-                                    alt="Ferrari"
-                                >
-                            </div>
-                            <div class="col-12 col-md-12 col-xl-8">
-                                <div class="card-body">
-                                    <h1 class="card-title">Ferrari F8 Tributo</h1>
-                                    <p class="card-text">Price: 50,000 €</p>
-                                    <div class="row">
-                                        <div
-                                            class="container-fluid col-12 col-sm-7 col-md-12 col-xxl-7"
-                                        >
-                                            <div
-                                                class="btn-group w-100"
-                                                role="group"
-                                                aria-label="Button group"
-                                            >
-                                                <a
-                                                    href="product.html"
-                                                    class="btn btn-primary btn-md"
-                                                >View</a
-                                                >
-                                                <a class="btn btn-danger btn-md" onclick=""
-                                                >Remove</a
-                                                >
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="container-fluid col-12 col-sm-5 col-md-12 col-xxl-5"
-                                        >
-                                            <div class="input-group" id="quantity_1">
-                                                <span class="input-group-text">Quantity</span>
-                                                <input
-                                                    type="number"
-                                                    class="form-control text-center"
-                                                    value="1"
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
-
-                    <!-- car 2 -->
-                    {{--<div class="card">
-                        <div class="row">
-                            <div class="col-12 col-xl-4">
-                                <img
-                                    src="../images/cars/ferrari_4.jpg"
-                                    class="object-fit-contain"
-                                    alt="Ferrari"
-                                >
-                            </div>
-                            <div class="col-12 col-md-12 col-xl-8">
-                                <div class="card-body">
-                                    <h1 class="card-title">Ferrari Sport</h1>
-                                    <p class="card-text">Price: 80,000 €</p>
-                                    <div class="row">
-                                        <div
-                                            class="container-fluid col-12 col-sm-7 col-md-12 col-xxl-7"
-                                        >
-                                            <div
-                                                class="btn-group w-100"
-                                                role="group"
-                                                aria-label="Button group"
-                                            >
-                                                <a
-                                                    href="product.html"
-                                                    class="btn btn-primary btn-md"
-                                                >View</a
-                                                >
-                                                <a class="btn btn-danger btn-md" onclick=""
-                                                >Remove</a
-                                                >
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="container-fluid col-12 col-sm-5 col-md-12 col-xxl-5"
-                                        >
-                                            <div class="input-group" id="quantity_2">
-                                                <span class="input-group-text">Quantity</span>
-                                                <input
-                                                    type="number"
-                                                    class="form-control text-center"
-                                                    value="2"
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
                 </div>
             </div>
         </div>

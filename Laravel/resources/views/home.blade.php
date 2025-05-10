@@ -31,15 +31,18 @@
                         <i class="bi bi-arrow-left"></i>
                     </a>
                 </li>
-
-                {{--<li class="nav-item">
-                    <a class="nav-link" href="{{ url('/home') }}">Admin</a>
-                </li>--}}
             </ul>
             <div class="d-flex align-items-center gap-1">
                     @auth()
                         <div class="d-flex align-items-center gap-1">
                             <span class="badge rounded-pill fs-6 text-white bg-primary">{{ auth()->user()->full_name }}</span>
+
+                            @auth
+                                @if(auth()->user()->is_admin)
+                                    <span class="badge rounded-pill fs-6 text-white bg-primary">ADMIN</span>
+                                @endif
+                            @endauth
+
                             <form action="{{ url('/perform_log_out') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger">Logout</button>
@@ -62,12 +65,10 @@
         </div>
 
 
-                 <form action="{{ route('products.global_search') }}" method="GET" class="d-flex flex-column flex-sm-row w-100">
-                    <input type="text" name="search" class="form-control" placeholder="Search for all products" value="{{ request('search') }}" aria-label="Search for all products">
-                    <button type="submit" class="btn btn-primary mt-2 mt-sm-0 ms-sm-2">Search</button>
-                 </form>
-
-
+        <form action="{{ route('products.global_search') }}" method="GET" class="d-flex flex-column flex-sm-row w-100">
+            <input type="text" name="search" class="form-control" placeholder="Search for all products" value="{{ request('search') }}" aria-label="Search for all products">
+            <button type="submit" class="btn btn-primary mt-2 mt-sm-0 ms-sm-2">Search</button>
+        </form>
 
     </nav>
 </header>
@@ -95,88 +96,6 @@
                         </a>
                     </div>
                     @endforeach
-
-
-                    {{--<!-- Category 1 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'audi']) }}" class="btn btn-sm {{ request('brand') === 'audi' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img src="{{ asset('images/logos/audi.png') }}" alt="logo" class="me-2">
-                            <span>Audi</span>
-                        </a>
-                    </div>
-                    <!-- Category 2 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'bentley']) }}" class="btn btn-sm {{ request('brand') === 'bentley' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img
-                                src="{{ asset('images/logos/bentley.png') }}"
-                                alt="logo"
-                                class="me-2"
-                            >
-                            <span>Bentley</span>
-                        </a>
-                    </div>
-                    <!-- Category 3 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'bmw']) }}" class="btn btn-sm {{ request('brand') === 'bmw' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img src="{{ asset('images/logos/bmw.png') }}" alt="logo" class="me-2">
-                            <span>BMW</span>
-                        </a>
-                    </div>
-                    <!-- Category 4 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'ferrari']) }}" class="btn btn-sm {{ request('brand') === 'ferrari' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img
-                                src="{{ asset('images/logos/ferrari.png') }}"
-                                alt="logo"
-                                class="me-2"
-                            >
-                            <span>Ferrari</span>
-                        </a>
-                    </div>
-                    <!-- Category 5 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'jaguar']) }}" class="btn btn-sm {{ request('brand') === 'jaguar' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img
-                                src="{{ asset('images/logos/jaguar.png') }}"
-                                alt="logo"
-                                class="me-2"
-                            >
-                            <span>Jaguar</span>
-                        </a>
-                    </div>
-                    <!-- Category 6 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'lamborghini']) }}" class="btn btn-sm {{ request('brand') === 'lamborghini' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img
-                                src="{{ asset('images/logos/lamborghini.png') }}"
-                                alt="logo"
-                                class="me-2"
-                            >
-                            <span>Lamborghini</span>
-                        </a>
-                    </div>
-                    <!-- Category 7 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'maserati']) }}" class="btn btn-sm {{ request('brand') === 'maserati' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img
-                                src="{{ asset('images/logos/maserati.png') }}"
-                                alt="logo"
-                                class="me-2"
-                            >
-                            <span>Maserati</span>
-                        </a>
-                    </div>
-                    <!-- Category 8 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                        <a href="{{ route('products.filter', ['brand' => 'tesla']) }}" class="btn btn-sm {{ request('brand') === 'tesla' ? 'btn-primary' : 'btn-secondary' }}">
-                        <img
-                                src="{{ asset('images/logos/tesla.png') }}"
-                                alt="logo"
-                                class="me-2"
-                            >
-                            <span>Tesla</span>
-                        </a>
-                    </div>--}}
                 </div>
             </div>
 
@@ -238,27 +157,7 @@
 
                     <hr>
 
-                    <!-- transmision -->
-
-                    {{--<label>Transmision:</label>
-                    <div class="row">
-                        <div class="form-check col-6">
-                            <label class="form-check-label" for="Manual"> Manual </label>
-                            <input class="form-check-input" type="checkbox" id="Manual">
-                        </div>
-
-                        <div class="form-check col-6">
-                            <label class="form-check-label" for="Automatic">
-                                Automatic
-                            </label>
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="Automatic"
-                            >
-                        </div>
-                    </div>--}}
-
+                    <!-- transmission -->
                     <label>Transmission:</label>
                     <div class="row">
 
@@ -277,35 +176,6 @@
                             </label>
                         </div>
                         @endforeach
-
-
-                        {{--<div class="form-check col-6">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                name="transmission[]"
-                                value="Manual"
-                                id="Manual"
-                                {{ is_array(request('transmission')) && in_array('Manual', request('transmission')) ? 'checked' : '' }}
-                            >
-                            <label class="form-check-label" for="Manual">
-                                Manual
-                            </label>
-                        </div>
-
-                        <div class="form-check col-6">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                name="transmission[]"
-                                value="Automatic"
-                                id="Automatic"
-                                {{ is_array(request('transmission')) && in_array('Automatic', request('transmission')) ? 'checked' : '' }}
-                            >
-                            <label class="form-check-label" for="Automatic">
-                                Automatic
-                            </label>
-                        </div>--}}
                     </div>
 
 
@@ -330,63 +200,6 @@
                             </label>
                         </div>
                         @endforeach
-
-
-                        {{--<div class="form-check col-6">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                name="fuel[]"
-                                value="Petrol"
-                                id="Gasoline"
-                                {{ is_array(request('fuel')) && in_array('Petrol', request('fuel')) ? 'checked' : '' }}
-                            >
-                            <label class="form-check-label" for="Gasoline">
-                                Gasoline
-                            </label>
-                        </div>
-
-                        <div class="form-check col-6">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                name="fuel[]"
-                                value="Diesel"
-                                id="Diesel"
-                                {{ is_array(request('fuel')) && in_array('Diesel', request('fuel')) ? 'checked' : '' }}
-                            >
-                            <label class="form-check-label" for="Diesel">
-                                Diesel
-                            </label>
-                        </div>
-
-                        <div class="form-check col-6">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                name="fuel[]"
-                                value="LPG"
-                                id="LPG"
-                                {{ is_array(request('fuel')) && in_array('LPG', request('fuel')) ? 'checked' : '' }}
-                            >
-                            <label class="form-check-label" for="LPG">
-                                LPG
-                            </label>
-                        </div>
-
-                        <div class="form-check col-6">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                name="fuel[]"
-                                value="LPG"
-                                id="LPG"
-                                {{ is_array(request('fuel')) && in_array('LPG', request('fuel')) ? 'checked' : '' }}
-                            >
-                            <label class="form-check-label" for="LPG">
-                                LPG
-                            </label>
-                        </div>--}}
                     </div>
 
 
@@ -398,6 +211,19 @@
                         <button type="submit" class="btn btn-primary btn-sm">
                             Search
                         </button>
+
+                        @auth
+                            @if(auth()->user()->is_admin)
+                            <a
+                                class="btn btn-warning btn-sm"
+                                type="button"
+                                href="{{ route('products.create') }}"
+                            >
+                                New product
+                            </a>
+                            @endif
+                        @endauth
+
                     </div>
                 </form>
                 <hr>
@@ -406,64 +232,6 @@
             <!-- content -->
             <div class="container col-10 col-lg-8">
                 <!--Sorting-->
-                {{--<div class="row gy-1">
-                    <div class="col-12 col-sm-6 col-md-4">
-                        <input
-                            type="radio"
-                            class="btn-check"
-                            name="btnradio"
-                            id="lowToHigh"
-                            checked
-                        >
-                        <label
-                            class="btn btn-sm btn-outline-primary w-100"
-                            for="lowToHigh"
-                        >Price Low to High</label
-                        >
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                        <input
-                            type="radio"
-                            class="btn-check"
-                            name="btnradio"
-                            id="highToLow"
-                        >
-                        <label
-                            class="btn btn-sm btn-outline-primary w-100"
-                            for="highToLow"
-                        >Price High to Low</label
-                        >
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-4">
-                        <input
-                            type="radio"
-                            class="btn-check"
-                            name="btnradio"
-                            id="HpHighToLow"
-                        >
-                        <label
-                            class="btn btn-sm btn-outline-primary w-100"
-                            for="HpHighToLow"
-                        >Horse power High to Low</label
-                        >
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-4">
-                        <input
-                            type="radio"
-                            class="btn-check"
-                            name="btnradio"
-                            id="HpLowToHigh"
-                        >
-                        <label
-                            class="btn btn-sm btn-outline-primary w-100"
-                            for="HpLowToHigh"
-                        >Horse power Low to High</label
-                        >
-                    </div>
-                </div>--}}
-
                 <form action="{{ route('products.filter') }}" method="GET" id="sortForm">
                     <!-- Keep all previous parameters for sorting -->
                     @foreach(request()->except('sort') as $key => $value)
@@ -574,6 +342,17 @@
                                                     >
                                                         View
                                                     </a>
+
+                                                    @auth
+                                                        @if(auth()->user()->is_admin)
+                                                        <a
+                                                            href="{{ route('products.manage', ['product' => $product->id]) }}"
+                                                            class="btn btn-warning btn-sm"
+                                                        >Manage</a
+                                                        >
+                                                        @endif
+                                                    @endauth
+
                                                 </div>
                                             </div>
                                         </div>
@@ -584,36 +363,8 @@
                     @endforeach
 
 
-                    {{--@foreach($products as $product)
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $product->title }}</h5>
-                                    <p class="card-text">
-                                        <strong>Brand:</strong> {{ $product->brand->name ?? 'Unknown' }}<br>
-                                        <strong>Price:</strong> ${{ number_format($product->price) }}<br>
-                                        <strong>Engine Power:</strong> {{ $product->engine_power }} HP<br>
-                                        <strong>Fuel:</strong> {{ $product->fuel->type ?? 'Unknown' }}<br>
-                                        <strong>Transmission:</strong> {{ $product->transmission->type ?? 'Unknown' }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach--}}
-
                 </div>
             </div>
-
-            {{--<div class="btn-toolbar col-12" role="toolbar">
-                <div class="btn-group me-2" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-secondary">&lt;</button>
-                    <button type="button" class="btn btn-secondary">1</button>
-                    <button type="button" class="btn btn-secondary">2</button>
-                    <button type="button" class="btn btn-secondary">3</button>
-                    <button type="button" class="btn btn-secondary">4</button>
-                    <button type="button" class="btn btn-secondary">&gt;</button>
-                </div>
-            </div>--}}
 
             @if ($products->hasPages())
                 <div class="mt-4">
@@ -673,11 +424,6 @@
                     </nav>
                 </div>
             @endif
-
-
-
-
-
         </div>
     </div>
 </main>

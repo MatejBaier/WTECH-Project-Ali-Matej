@@ -17,8 +17,8 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
     >
-    <link rel="stylesheet" href="../css/generic.css">
-    <link rel="stylesheet" href="../css/signin.css">
+    <link rel="stylesheet" href="{{ asset('css/generic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
 </head>
 
 <body>
