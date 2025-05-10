@@ -22,7 +22,8 @@ class ShoppingCartController extends Controller
             # Not logged in user
             $cart = session('cart', []);
 
-            $cartItems = collect($cart)->map(function ($item, $productId) {
+            $cartItems = collect($cart)->map(function ($item, $productId)
+            {
                 $product = Product::with('mainImage')->find($productId);
 
                 return (object) [
