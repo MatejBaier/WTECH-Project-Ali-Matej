@@ -182,7 +182,7 @@
 
                     <hr>
 
-                    <label>Transmision:</label>
+                    <label>Transmission:</label>
                     <div class="row">
 
                         @foreach($transmissions as $transmission)
@@ -263,7 +263,7 @@
                         <hr>
 
                         {{--@if(isset($product))--}}
-                        <div class="btn-group w-100" role="group">
+                        <div class="d-grid gap-2 w-100" role="group">
 
 
                             <button type="submit" class="btn btn-warning btn-sm">
@@ -272,24 +272,18 @@
 
 
                         </div>
-                        {{--@else
-                            <div class="btn-group w-100" role="group">
-                                <button type="submit" class="btn btn-success btn-sm">
-                                    Create product
-                                </button>
-                            </div>
-                        @endif--}}
+
                     </form>
 
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">
+                        <button type="submit" class="btn btn-danger btn-sm w-100">
                             Delete
                         </button>
                     </form>
 
-                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#addImageModal">
+                    <button type="button" class="btn btn-info btn-sm w-100" data-bs-toggle="modal" data-bs-target="#addImageModal">
                         Add picture
                     </button>
                 </div>
@@ -297,7 +291,6 @@
             </div>
 
 
-        {{--</form>--}}
         </div>
     </div>
 

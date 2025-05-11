@@ -86,54 +86,15 @@
     @csrf
         <div class="container-fluid">
             <div class="row">
-                {{--<form class="form-container" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf--}}
 
-                {{--<div class="col-10 col-md-6 offset-1 offset-md-0">
-                    <div class="container overflow-auto" style="max-height: 42rem">
-                        <div class="row">
-                            <!-- image 1-->
-
-
-                            @if(isset($product) && $product->images)
-                                @foreach($product->images as $image)
-                                    <div class="gy-1">
-                                        <div
-                                            class="card"
-                                            --}}{{--onclick="openModal('../images/cars/BMW.jpg')"--}}{{--
-                                        >
-                                            <img
-                                                src="{{ asset($image->image_path) }}"
-                                                onclick="openModal('{{ asset($image->image_path) }}')"
-                                                alt="Product image"
-                                                class="card-img-top"
-                                            >
-                                            <div class="text-muted text-center small">ID: {{ $image->id }}</div>
-                                            <div class="text-muted small">
-                                                Route: {{ route('products.images.destroy', $image->id) }}
-                                            </div>
-
-
-
-                                            <div class="card-footer text-center p-1">
-                                                <form action="{{ route('products.images.destroy', $image->id) }}" method="POST" onsubmit="return confirm('Delete this image?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-sm btn-danger w-100">Remove</button>
-                                                </form>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endif
-
-
-                        </div>
+                <div class="col-10 col-md-6 offset-1 offset-md-0">
+                    <div
+                        class="d-flex align-items-center justify-content-center border border-secondary bg-light"
+                        style="height: 300px;"
+                    >
+                        <span class="text-muted">No images yet</span>
                     </div>
-                </div>--}}
-
+                </div>
 
                 <div class="col-10 offset-1 col-md-6 offset-md-0">
                     <div class="input-group mb-3">
@@ -180,7 +141,7 @@
 
                     <hr>
 
-                    <label>Transmision:</label>
+                    <label>Transmission:</label>
                     <div class="row">
 
                         @foreach($transmissions as $transmission)
@@ -275,9 +236,9 @@
                             Create product
                         </button>
                     </div>
-                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" onclick="alert('Please create the product first, then you can upload images')">
+                    {{--<button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" onclick="alert('Please create the product first, then you can upload images')">
                         Add picture
-                    </button>
+                    </button>--}}
 
 
 

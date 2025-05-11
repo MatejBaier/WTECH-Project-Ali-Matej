@@ -36,7 +36,6 @@ class ProductImagesSeeder extends Seeder
 
             $products = File::directories($brandPath);
 
-            // Produkty pod značkou
             foreach ($products as $productPath)
             {
                 $images = File::files($productPath);
